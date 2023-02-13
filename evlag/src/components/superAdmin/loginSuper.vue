@@ -5,7 +5,12 @@
                 <v-img src="../../assets/images/16680.jpg" style="height: 100vh">
                     <v-layout wrap justify-center>
                         <v-flex lg3>
-                            <v-card elevation="15" color="white" style="margin-top:59%" >
+                            <v-card elevation="15" color="white" style="margin-top:53%" >
+                                <v-layout wrap justify-center text-center>
+                                    <v-flex lg8 pa-2>
+                                        <v-img src="../../assets/images/logo.png"></v-img>
+                                    </v-flex>
+                                </v-layout>
                                 <v-form ref="file">
                                     <v-layout wrap justify-center>
                                         <v-flex lg10 pa-5>
@@ -18,7 +23,7 @@
                                             @keyup.enter="test()">
                                             </v-text-field>
                                         </v-flex>
-                                        <v-flex lg10 px-3>
+                                        <v-flex lg10 pa-5>
                                         <v-text-field
                                             v-model="password"
                                             prepend-inner-icon="mdi-lock"
