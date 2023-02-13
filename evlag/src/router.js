@@ -4,7 +4,10 @@ Vue.use(Router);
 let router =new Router({
     mode: 'history',
     routers:[{
-
+        path: '/',
+        name:'login',
+        component:()=>
+            import('./components/superAdmin/loginSuper')
     }]
 })
 export default router;
