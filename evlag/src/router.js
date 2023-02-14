@@ -10,7 +10,20 @@ let router = new Router({
         component:()=>
             import('./components/superAdmin/loginSuper')
     },
-    
+    {
+        path: '/admin',
+        name: 'admin',
+        component:()=>
+            import('./components/superAdmin/superPanel'),
+        children:[
+            {
+                path:'/dashBoard',
+                props:true,
+                component:()=>
+                    import('./components/superAdmin/dashBoard')
+            },
+        ]
+    }
     ]
 })
 // router.beforeEach((to,from,next) => {
