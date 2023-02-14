@@ -16,6 +16,12 @@ let router = new Router({
         component:()=>
             import('./components/admin/dashBoard')
     },
+    // {
+    //     path:'/admin',
+    //     name:'admin',
+    //     component:()=>
+    //         import('./components/superAdmin/superPanel')
+    // },
     {
         path: '/admin',
         name: 'admin',
