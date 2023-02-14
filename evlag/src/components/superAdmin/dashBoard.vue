@@ -12,11 +12,9 @@
         </v-layout>
         <v-layout wrap justify-center style="margin-top: 5%">
             <v-flex lg12 text-center>
-                <p class="nju">HI ADMIN</p>
+                <p class="nju">HI SUPERADMIN</p>
             </v-flex>
-            <v-flex lg6 text-center>
-                <p class="asd">The world of Parity welcomes you with great pleasure. The management of the rooms are simplified. </p>
-            </v-flex>
+           
         </v-layout>
     </v-img>
     </div>

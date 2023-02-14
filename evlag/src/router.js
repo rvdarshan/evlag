@@ -34,6 +34,12 @@ let router = new Router({
                 component:()=>
                     import('./components/superAdmin/dashBoard')
             },
+            {
+                path:'/superprofile',
+                props:true,
+                component:()=>
+                    import('./components/superAdmin/superProfile')
+            },
         ]
     }
     ]

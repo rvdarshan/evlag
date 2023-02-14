@@ -16,6 +16,8 @@
 
 import store from './store'
 import axios from 'axios'
+import './assets/style/style.css'
+import './assets/style/font.css'
 export default {
   name: 'App',
 
