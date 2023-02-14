@@ -539,3 +539,64 @@ export default {
   background: #99CDA9;
 }
 </style> -->
+
+<!-- another one -->
+
+
+<!-- <template>
+    <div class="dashboard">
+      <div class="chart">
+        <chart-component :data="chartData" />
+      </div>
+      <div class="table">
+        <table-component :data="tableData" />
+      </div>
+      <div class="notifications">
+        <notifications-component :data="notificationData" />
+      </div>
+    </div>
+  </template>
+  
+  <script>
+  import ChartComponent from './ChartComponent.vue'
+  import TableComponent from './TableComponent.vue'
+  import NotificationsComponent from './NotificationsComponent.vue'
+  
+  export default {
+    name: 'Dashboard',
+    components: {
+      ChartComponent,
+      TableComponent,
+      NotificationsComponent
+    },
+    data () {
+      return {
+        chartData: { /* Chart data */ },
+        tableData: { /* Table data */ },
+        notificationData: { /* Notification data */ }
+      }
+    }
+  }
+  </script>
+  
+  <style>
+  .dashboard {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+  }
+  
+  .chart {
+    flex-basis: 50%;
+  }
+  
+  .table {
+    flex-basis: 30%;
+  }
+  
+  .notifications {
+    flex-basis: 20%;
+  }
+  </style>
+   -->
