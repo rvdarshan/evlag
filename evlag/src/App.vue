@@ -1,57 +1,60 @@
 <template>
   <v-app>
-    
-    
+    <v-app-bar
+      app
+      color="primary"
+      dark
+    >
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
+          transition="scale-transition"
+          width="40"
+        />
+
+        <v-img
+          alt="Vuetify Name"
+          class="shrink mt-1 hidden-sm-and-down"
+          contain
+          min-width="100"
+          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
+          width="100"
+        />
+      </div>
+
+      <v-spacer></v-spacer>
+
+      <v-btn
+        href="https://github.com/vuetifyjs/vuetify/releases/latest"
+        target="_blank"
+        text
+      >
+        <span class="mr-2">Latest Release</span>
+        <v-icon>mdi-open-in-new</v-icon>
+      </v-btn>
+    </v-app-bar>
+
     <v-main>
-      
-
-      <router-view>
-
-    </router-view>
+      <HelloWorld/>
     </v-main>
   </v-app>
 </template>
 
 <script>
+import HelloWorld from './components/HelloWorld';
 
-import store from './store'
-import axios from 'axios'
-import './assets/style/style.css'
-import './assets/style/font.css'
 export default {
   name: 'App',
 
   components: {
-    
-    
+    HelloWorld,
   },
- data: () => ({
+
+  data: () => ({
     //
   }),
-  mounted()
-  {
-    this.gi()
-    {
-      axios({
-        method: 'post',
-        URL:"/user/profile",
-        headers:
-        {
-          token:localStorage.getItem("token"),
-        },
-        data:{
-          id:localStorage.getItem("id")
-        }
-      }).then((response)=>{
-        store.commit("Username",response.data.data.firstName+ " " +response.data.data.lastName);
-        store.commit("Phone",response.data.data.mobileNumber);
-      })
-    }
-  },
-  methods:
-  {
-    
-  }
- 
 };
 </script>
