@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-app>
+        
     <v-app-bar
       app
       color="primary"

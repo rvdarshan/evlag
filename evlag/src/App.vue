@@ -1,24 +1,30 @@
 <template>
+<div>
   <v-app>
-    
-
     <v-main>
-      <appBar/>
-      <router-view>
-
-      </router-view>
+      
+        <v-layout wrap>
+          <v-flex xs12><navBar/></v-flex>
+          <v-flex xs12> 
+            <router-view></router-view>
+            </v-flex>
+        </v-layout>
+      
+      
+     
     </v-main>
   </v-app>
+  </div>
 </template>
 
 <script>
 
-import appBar from './components/basic/appBar.vue'
+import navBar from '@/components/basic/appBar.vue'
 export default {
   name: 'App',
 
   components: {
-    appBar,
+    navBar,
   },
 
   data: () => ({
