@@ -7,7 +7,7 @@
               <v-toolbar color="white"  >
                 
   
-                <v-toolbar-title style="margin-left:32%">Super Admin</v-toolbar-title>
+                <v-toolbar-title style="margin-left:32%">ADMIN</v-toolbar-title>
   
                 <v-spacer></v-spacer>
   
