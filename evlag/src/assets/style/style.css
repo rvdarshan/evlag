@@ -1,14 +1,18 @@
 .nju{
-    font-size: 50px;
-    color: white;
-    margin-top: 40%;
-    margin-left: 3%;
+    font-size: 25px;
+    margin-top: 20%;
+    margin-left: 35%;
+}
+.njh{
+    font-size: 25px;
+    margin-top: 3%;
+    margin-left: 35%;
 }
 .head{
     font-size: 30px;
     color: grey;
-    margin-top: 5%;
-    margin-left: 49%;
+    margin-top: 1%;
+    margin-left: 30%;
 }
 .tok{
     font-size: 28px;

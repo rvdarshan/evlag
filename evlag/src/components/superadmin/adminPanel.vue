@@ -9,14 +9,14 @@
                             width="256"
                             class="mx-auto"
                         > -->
-                            <v-navigation-drawer permanent fixed>
+                            <v-navigation-drawer permanent fixed style="margin-top: 4.2%">
                             <v-list-item >
                                 <v-list-item-content>
                                 <v-list-item-title class="text-h6">
-                                    <p class="nu">EVLAG</p>
+                                    <p style="margin-left:35%">EVLAG</p>
                                 </v-list-item-title>
                                 <v-list-item-subtitle>
-                                    <p>Super Admin</p>
+                                    <p style="margin-left:28%">SUPER ADMIN</p>
                                 </v-list-item-subtitle>
                                 </v-list-item-content>
                             </v-list-item>
@@ -61,10 +61,10 @@
     data () {
       return {
         items: [
-          { title: 'Dashboard', icon: 'mdi-view-dashboard' },
-          { title: 'Profile', icon: 'mdi-account' },
-          { title: 'Security', icon:'mdi-security' },
-          { title: 'Log', icon:'mdi-book-open' },
+          { title: 'DASHBOARD', icon: 'mdi-view-dashboard' },
+          { title: 'PROFILE', icon: 'mdi-account' },
+          { title: 'SECURITY', icon:'mdi-security' },
+          { title: 'LOG', icon:'mdi-book-open' },
         ],
         right: null,
       }

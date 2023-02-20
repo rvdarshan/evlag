@@ -20,6 +20,8 @@
 <script>
 
 import navBar from '@/components/basic/appBar.vue'
+import './assets/style/font.css'
+import './assets/style/style.css'
 export default {
   name: 'App',
 

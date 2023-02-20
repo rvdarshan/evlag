@@ -22,11 +22,26 @@ let router = new Router({
                     import('./components/superadmin/dashBoard'),
             },
             {
+<<<<<<< Updated upstream
                 path: '/adminpanel',
                 props:true,
                 component:()=>
                     import('./components/admin/adminPanel'),
             },
+=======
+                path:'/profilesuper',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/profileSuper'),
+            },
+            {
+                path:'/securitymanagement',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/securityPage'),
+            }
+
+>>>>>>> Stashed changes
         ]
     }
 ]

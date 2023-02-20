@@ -3,7 +3,7 @@
         
     <v-app-bar
       app
-      color="primary"
+      color="grey-darken-2"
       dark
     >
       <div class="d-flex align-center">
@@ -21,8 +21,9 @@
           class="shrink mt-1 hidden-sm-and-down"
           contain
           min-width="100"
-          src=""
+          src="../../assets/images/logo-no-background.png"
           width="100"
+          style="margin-left:5%"
         />
       </div>
 
@@ -33,8 +34,8 @@
         target="_blank"
         text
       >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+        <span class="mr-2">Sign Out</span>
+        <v-icon>mdi-logout</v-icon>
       </v-btn>
     </v-app-bar>
 
