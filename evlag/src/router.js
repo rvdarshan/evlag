@@ -32,6 +32,12 @@ let router = new Router({
                 props:true,
                 component:()=>
                     import('./components/superadmin/securityPage'),
+            },
+            {
+                path:'/securityregistration',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/securityRegistration')
             }
 
         ]
