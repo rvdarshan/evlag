@@ -7,6 +7,7 @@
                             <h2 style="font-family:typ;font-size:40px; text-align: center;margin-top:2%"><u>SECURITY REGISTRATION</u></h2>
                         </v-flex>
                 </v-layout>
+                 <v-form ref="file">
                 <v-layout wrap justify-center>
                     <v-flex lg5>
                         
@@ -17,6 +18,21 @@
                                     style="margin-top: 15%"
                                     v-model="name"
                                     :rules="nameRules"
+                                    required
+                                ></v-text-field>
+                                   
+                    </v-flex>
+                </v-layout>
+                <v-layout wrap justify-center>
+                    <v-flex lg5>
+                        
+                                <v-text-field
+                                    label="SECURITY ID"
+                                    outlined
+                                    dense 
+                                    style="margin-top: 3%"
+                                    v-model="securityId"
+                                    
                                     required
                                 ></v-text-field>
                                    
@@ -45,7 +61,7 @@
                                     outlined
                                     dense 
                                     style="margin-top: 3%"
-                                    
+                                    v-model="phoneNumber"
                                 ></v-text-field>
                                    
                     </v-flex>
@@ -64,16 +80,18 @@
                                             outlined
                                             dense
                                             style="margin-top: 3%"  
-                                            @keyup.enter="test()"
+                                           
                                             ></v-text-field>
                     </v-flex>
                 </v-layout>
+                 </v-form>
                 <v-layout wrap justify-center>
                     <v-flex lg5 style="margin-left:27%; margin-top:5%">
                         <v-btn
                             class="ma-2"
                             
                             color="success"
+                            @click="create()"
       
                          >CREATE ACCOUNT</v-btn>
                     </v-flex>
@@ -84,14 +102,18 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-    data: ()=>({
-        valid: true,
+    data(){
+        return{
+            valid: true,
         name: '',
         nameRules: [
             v => !!v || 'Name is required',
         ],
         email: '',
+        phoneNumber:'',
+        securityId:'',
         emailRules: [
             v => !!v || 'E-mail is required',
             v => /.+@.+\..+/.test(v) || 'E-mail must be valid',
@@ -108,7 +130,40 @@ export default {
         required: value => !!value || 'Required',
         min: v => v.length >= 3 || 'Min 5 characters',
       },
+        }
+    },
+    methods:{
+        create()
+        {
+            // if(this.$refs.file.validate())
+            // {
+            axios({
+                method:'post',
+                url:this.baseURL+'/superAdmin/addSecurity',
+                headers:{
+                    token: localStorage.getItem('Token')                   
+                },
+                data:{
+                    securityName:this.name,
+                    securityPhoneNumber:this.phoneNumber,
+                    securityEmail:this.email,
+                    securityId:this.securityId,
+                    securityPassword:this.password,
+                    id:this.$route.query.id
+                }
+            }).then((response)=>{
+                if(response.data.status)
+                { 
+                    console.log("Created")
+                    this.$router.push('/dashboard')
+                }
+            }).catch((error)=>{
+                console.log(error);
+            })
+            
+        },
     }
-    )
+    
+    
 }
 </script>

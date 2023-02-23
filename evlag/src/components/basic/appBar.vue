@@ -30,8 +30,7 @@
       <v-spacer></v-spacer>
 
       <v-btn
-        href=""
-        target="_blank"
+        @click="logout()"
         text
       >
         <span class="mr-2">Sign Out</span>
@@ -41,3 +40,51 @@
 
     </div>
 </template>
+
+<script>
+import store from '../../store'
+import axios from 'axios';
+export default {
+  
+  computed:
+  {
+    em()
+    {
+      return store.state.email
+    },
+    user()
+    {
+      return store.state.name
+    },
+    phone()
+    {
+      return store.state.phoneNumber
+    }
+  },
+  methods:
+  {
+    log()
+    {
+      axios({
+      method: "get",
+      url: this.baseURL+ '/admin/logout',
+      headers:{
+          token: localStorage.getItem('Token')                   
+      },
+       params:{
+          id:this.$route.query.id,
+       }
+      
+    }).then((response)=>{
+      if(response.data.status)
+      {
+        
+        localStorage.removeItem("Token");
+        localStorage.removeItem("ID");
+        this.$router.push('/');
+      }
+    })
+    }
+  }
+}
+</script>

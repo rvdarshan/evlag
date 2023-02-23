@@ -11,7 +11,7 @@
                                         <v-img src="../../assets/images/logo.png"></v-img>
                                     </v-flex>
                                 </v-layout>
-                                <v-form ref="file">
+                                <v-form refs="file">
                                     <v-layout wrap justify-center>
                                         <v-flex lg10 px-3>
                                             <v-text-field
@@ -19,7 +19,7 @@
                                                 label="email"
                                                 :rules="[rules.required]"
                                                 outlined
-                                                @keyup.enter="test()">
+                                               >
                                                 </v-text-field>
                                         </v-flex>
                                         <v-flex lg10 px-3>
@@ -33,7 +33,7 @@
                                             label="Password"
                                             @click:append="show1 = !show1"
                                             outlined
-                                            @keyup.enter="test()"
+                                            
                                             ></v-text-field>
                                         </v-flex>
                                     </v-layout>
@@ -59,6 +59,9 @@
     </div>
 </template>
 <script>
+import axios from 'axios'
+import store from '../../store'
+
 export default {
     data()
   {
@@ -79,5 +82,52 @@ export default {
       },
     }
   },
+ methods:
+  {
+    
+    test(){
+
+    //   if(this.$refs.file.validate())
+    //   {
+        this.apploading=true,
+        axios({
+          method:'post',
+          url:this.baseURL+'/superAdmin/login',
+          data:{
+            email: this.email,
+            password: this.password,
+          },
+        }).then((response)=>{
+          if(response.data.status)
+          {
+              
+            this.apploading=false,
+            localStorage.setItem("ID",response.data.data._id);
+            localStorage.setItem("Token",response.data.token);
+            store.commit('email',response.data.data.email);
+            store.commit("phoneNumber",response.data.data.phoneNumber);
+            store.commit("name",response.data.data.name);
+            
+            
+                this.$router.push('/dashboard');
+            
+            
+          }
+          else{
+            alert("response data msg");
+          }
+        })
+        .catch((error)=>{
+        //   this.apploading=false;
+        //   this.ServerError=true;
+        //   this.Pagenotfound=true;
+          console.log(error);
+        })
+      
+    //   }
+    }
+
+  }
+  
 }
 </script>

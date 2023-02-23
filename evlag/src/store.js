@@ -6,6 +6,17 @@ export default new Vuex.Store({
 
     },
     mutations:{
-        
+        email(state,item)
+        {
+            state.email=item;
+        },
+        name(state,item)
+        {
+            state.name=item;
+        },
+        phoneNumber(state,item)
+        {
+            state.phoneNumber=item;
+        },
     }
 })

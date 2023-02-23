@@ -22,16 +22,19 @@
                             </v-list-item>
 
                             <v-divider></v-divider>
-
+                            
                             <v-list
                                 dense
                                 nav
-                            >
-                                <v-list-item
                                 v-for="item in items"
                                 :key="item.title"
                                 link
+                            >
+                            <router-link :to="item.link" style="text-decoration:none;color:black;">
+                                <v-list-item
+                                
                                 >
+                                
                                 <v-list-item-icon>
                                     <v-icon>{{ item.icon }}</v-icon>
                                 </v-list-item-icon>
@@ -39,8 +42,10 @@
                                 <v-list-item-content>
                                     <v-list-item-title>{{ item.title }}</v-list-item-title>
                                 </v-list-item-content>
-                                </v-list-item>
                                 
+                                </v-list-item>
+                                </router-link>
+                                <v-divider></v-divider>
                             </v-list>
                             </v-navigation-drawer>
                         <!-- </v-card> -->
@@ -61,13 +66,14 @@
     data () {
       return {
         items: [
-          { title: 'DASHBOARD', icon: 'mdi-view-dashboard' },
-          { title: 'PROFILE', icon: 'mdi-account' },
-          { title: 'SECURITY', icon:'mdi-security' },
-          { title: 'LOG', icon:'mdi-book-open' },
+          { title: 'DASHBOARD', icon: 'mdi-view-dashboard', link:'dashboard' },
+          { title: 'PROFILE', icon: 'mdi-account', link:'profilesuper' },
+          { title: 'SECURITY', icon:'mdi-security', link:'securitymanagement' },
+          { title: 'LOG', icon:'mdi-book-open', link:'userlog' },
         ],
-        right: null,
+        
       }
     },
+    
   }
 </script>

@@ -38,6 +38,36 @@ let router = new Router({
                 props:true,
                 component:()=>
                     import('./components/superadmin/securityRegistration')
+            },
+            {
+                path:'/updatepassword',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/updatePassword')
+            },
+            {
+                path:'/securitylist',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/securityList')
+            },
+            {
+                path:'/securityprofile',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/securityProfile')
+            },
+            {
+                path:'/securityupdate',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/securityUpdate')
+            },
+            {
+                path:'/userlog',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/userLog')
             }
 
         ]

@@ -9,6 +9,7 @@
                 </v-layout>
                 <v-layout wrap justify-center>
                     <v-flex lg12 style="margin-top: 10%;">
+                        <router-link :to="'/securityregistration'" style="text-decoration:none">
                         <v-row
                             align="center"
                             justify="space-around"
@@ -19,6 +20,7 @@
                             > SECURITY REGISTRATION
                          </v-btn>
                         </v-row>
+                        </router-link>
                     </v-flex>
                 </v-layout>
                 <v-layout wrap justify-center>
@@ -44,7 +46,7 @@
                         <v-btn
                             text
                             color="primary"
-                            > SECURITY PROFILE
+                            > SECURITY LIST
                          </v-btn>
                         </v-row>
                     </v-flex>
