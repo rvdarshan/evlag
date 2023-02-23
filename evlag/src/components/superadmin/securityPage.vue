@@ -39,6 +39,7 @@
                 </v-layout>
                 <v-layout wrap justify-center>
                     <v-flex lg12 style="margin-top: 3%;">
+                        <router-link :to="'/securitylist'" style="text-decoration:none">
                         <v-row
                             align="center"
                             justify="space-around"
@@ -49,6 +50,7 @@
                             > SECURITY LIST
                          </v-btn>
                         </v-row>
+                        </router-link>
                     </v-flex>
                 </v-layout>
             </v-flex>

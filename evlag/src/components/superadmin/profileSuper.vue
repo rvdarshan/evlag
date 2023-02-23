@@ -1,14 +1,60 @@
 <template>
     <div>
         <v-layout wrap justify-center>
-            <v-flex lg12 scroll>
+            <v-flex style="background-color:#545454" lg12 scroll>
                 <v-img src="" height="100vh">
-                    <v-layout wrap justify-center>
-                        <v-flex lg12>
-                            <h2 style="font-family:typ;font-size:40px; text-align: center;margin-top:2%"><u>PROFILE</u></h2>
-                        </v-flex>
-                    </v-layout>
-                    <v-layout wrap justify-center>
+                    
+                    <v-card elevation="10" width="60%" height="77%" style="margin-left:20%; margin-top:5%">
+                        <v-layout wrap justify-center>
+                            <v-flex lg4>
+                                <v-card elevation="0" height="77vh" color="#424242">
+                                    <v-layout wrap justify-center>
+                                        <v-flex lg12>
+                                            <v-img src="../../assets/images/logo.png" width="75%" style="margin-top:15%;margin-left:13%;"></v-img>
+                                        </v-flex>
+                                        <v-flex lg12>
+                                            <p class="text-h6" style="margin-left:35%;margin-top:35%; color:white">PROFILE</p>
+                                        </v-flex>
+                                    </v-layout>
+                                </v-card>
+                            </v-flex>
+                            <v-flex lg8>
+                                <v-layout wrap justify-center>
+                                    <v-flex lg6>
+                                        <p style="text-align:center">NAME</p>
+                                    </v-flex>
+                                    <v-flex lg6>
+                                        <p style="text-align:center">{{userData.name}}</p>
+                                    </v-flex>
+                                </v-layout>
+                                <v-layout wrap justify-center>
+                                    <v-flex lg6>
+                                        <p style="text-align:center">ROLE</p>
+                                    </v-flex>
+                                    <v-flex lg6>
+                                        <p style="text-align:center">{{userData.role}}</p>
+                                    </v-flex>
+                                </v-layout>
+                                <v-layout wrap justify-center>
+                                    <v-flex lg6>
+                                        <p style="text-align:center">EMAIL</p>
+                                    </v-flex>
+                                    <v-flex lg6>
+                                        <p style="text-align:center">{{userData.email}}</p>
+                                    </v-flex>
+                                </v-layout>
+                                <v-layout wrap justify-center>
+                                    <v-flex lg6>
+                                        <p style="text-align:center">PHONE NUMBER</p>
+                                    </v-flex>
+                                    <v-flex lg6>
+                                        <p style="text-align:center">{{userData.phoneNumber}}</p>
+                                    </v-flex>
+                                </v-layout>
+                            </v-flex>
+                        </v-layout>
+                    </v-card>
+                    <!-- <v-layout wrap justify-center>
                         <v-flex lg6>
                             <v-layout wrap justify-center>
                                 <v-flex lg12>
@@ -47,9 +93,9 @@
                                 </v-flex>
                             </v-layout>
                         </v-flex>
-                    </v-layout>
-                    <v-layout wrap justify-center>
-                        <v-flex lg12 style="margin-top:8%">
+                    </v-layout> -->
+                    <!-- <v-layout wrap justify-center>
+                        <v-flex lg12 style="margin-top:2%">
                               <v-row
                                 align="center"
                                 justify="space-around"
@@ -66,7 +112,7 @@
                                 </v-btn>
                             </v-row>
                         </v-flex>
-                    </v-layout>
+                    </v-layout> -->
                 </v-img>
             </v-flex>
         </v-layout>
