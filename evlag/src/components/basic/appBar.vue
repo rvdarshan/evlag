@@ -31,7 +31,7 @@
 
       <v-btn
         @click="logout()"
-        text
+        link
       >
         <span class="mr-2">Sign Out</span>
         <v-icon>mdi-logout</v-icon>
@@ -63,11 +63,11 @@ export default {
   },
   methods:
   {
-    log()
+    logout()
     {
       axios({
       method: "get",
-      url: this.baseURL+ '/admin/logout',
+      url: this.baseURL+ '/superAdmin/logout',
       headers:{
           token: localStorage.getItem('Token')                   
       },

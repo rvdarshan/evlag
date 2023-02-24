@@ -2,15 +2,11 @@
     <div>
         <v-layout wrap justify-center>
             <v-flex lg12>
-                <v-layout wrap justify-center>
-                        <v-flex lg12>
-                            <h2 style="font-family:typ;font-size:40px; text-align: center;margin-top:2%"><u>LOG</u></h2>
-                        </v-flex>
-                </v-layout>
+                
                 <v-layout wrap justify-center>
                     <v-flex lg12>
                         <v-card>
-                            <v-card-title>LOG
+                            <v-card-title>VISITOR'S LOG
                                 <v-spacer></v-spacer>
                                 <v-text-field
                                     v-model="search"
@@ -24,9 +20,12 @@
                                 <v-spacer></v-spacer>
                             </v-card-title>
                             <v-data-table
+                                header-fixed
+                                height="700px"
                                 :headers="headers"
                                 :items="securitydata"
                                 :search="search"
+                                
                             ></v-data-table>
                         </v-card>
                     </v-flex>

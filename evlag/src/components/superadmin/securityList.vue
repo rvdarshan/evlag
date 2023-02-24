@@ -1,16 +1,16 @@
 <template>
     <div>
         <v-layout wrap justify-center>
-            <v-flex lg12>
+            <v-flex lg12 style="background-color:#545454"  scroll>
                 <v-layout wrap justify-center>
-                        <v-flex lg12>
-                            <h2 style="font-family:typ;font-size:40px; text-align: center;margin-top:2%"><u>SECURITY LIST</u></h2>
+                        <v-flex lg8>
+                            
                         </v-flex>
                 </v-layout>
                 <v-layout wrap justify-center>
                     <v-flex lg12>
                         <v-card>
-                            <v-card-title>SECURITY
+                            <v-card-title>SECURITY LIST
                                 <v-spacer></v-spacer>
                                 <v-text-field
                                     v-model="search"
@@ -24,8 +24,10 @@
                                 <v-spacer></v-spacer>
                             </v-card-title>
                             <v-data-table
+                            fixed-header
+                            height="700px"
                                 :headers="headers"
-                                :items="securitydata"
+                                :items="userdata"
                                 :search="search"
                             ></v-data-table>
                         </v-card>
@@ -37,30 +39,65 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data(){
         return{
             search:'',
-            securitydata:[],
+            userdata:[],
             headers: [
                 {
                     text:'SECURITY NAME',
                     align:'start',
                     sortable:false,
+                    value:'securityName'
 
                 },
                 {
-                    text:'SECURITY ID',
+                    text:'SECURITY ID', value:'securityId'
                 },
                 {
-                    text:'EMAIL',
+                    text:'EMAIL', value:'securityEmail',
                 },
                 {
-                    text:'PHONE'
+                    text:'PHONE',value:'securityPhoneNumber'
                 },
 
             ]
         }
+    },
+    mounted(){
+        this.getData();
+    },
+    methods:{
+        getData()
+        {
+            axios({
+                method:'get',
+                url:this.baseURL+'/view/allsecurities',
+                headers:{
+                    token:localStorage.getItem("Token"),
+                },
+                params:{
+                    id:localStorage.getItem("ID"),
+                },
+
+            }).then((response)=>{
+                if(response.data.status)
+                {
+                    console.log("responded");
+                    this.userdata=response.data.data;
+                }
+                else{
+                    alert("Something went wrong")
+                }
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+        },
+        
     }
 }
 </script>
+

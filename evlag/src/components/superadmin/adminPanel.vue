@@ -68,8 +68,10 @@
         items: [
           { title: 'DASHBOARD', icon: 'mdi-view-dashboard', link:'dashboard' },
           { title: 'PROFILE', icon: 'mdi-account', link:'profilesuper' },
-          { title: 'SECURITY', icon:'mdi-security', link:'securitymanagement' },
-          { title: 'LOG', icon:'mdi-book-open', link:'userlog' },
+          { title: 'ADD NEW SECURITY', icon:'mdi-account-plus', link:'securityregistration' },
+          { title: 'SECURITY LIST', icon:'mdi-account-group-outline', link:'securitylist' },
+          { title: 'SECURITY ALLOCATION', icon:'mdi-bell-outline', link:'securityallocation' },
+          { title: "VISITOR'S LOG", icon:'mdi-book-open', link:'userlog' },
         ],
         
       }
