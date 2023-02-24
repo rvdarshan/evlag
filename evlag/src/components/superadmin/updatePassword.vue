@@ -1,40 +1,11 @@
 <template>
     <div>
         <v-layout wrap justify-center>
-            <v-flex lg12>
-                <v-layout wrap justify-center>
-                        <v-flex lg12>
-                            <h2 style="font-family:typ;font-size:40px; text-align: center;margin-top:2%"><u>UPDATE PASSWORD</u></h2>
-                        </v-flex>
-                </v-layout>
-                <v-layout wrap justify-center>
-                    <v-flex lg5 style="margin-top:15%">
-                        <v-text-field
-                                            v-model="password"
-                                            prepend-inner-icon="mdi-lock"
-                                            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-                                            :rules="[rules.required, rules.min]"
-                                            :type="show1 ? 'text' : 'password'"
-                                            name="input-10-1"
-                                            label="PASSWORD"
-                                            @click:append="show1 = !show1"
-                                            outlined
-                                            dense
-                                            style="margin-top: 3%"  
-                                            @keyup.enter="test()"
-                                            ></v-text-field>
-                    </v-flex>
-                </v-layout>
-                <v-layout wrap justify-center>
-                    <v-flex lg5 style="margin-left:27%; margin-top:5%">
-                        <v-btn
-                            class="ma-2"
-                            
-                            color="success"
-      
-                         >UPDATE PASSWORD</v-btn>
-                    </v-flex>
-                </v-layout>
+            <v-flex style="background-color:#545454" lg12 scroll>
+                 <v-img src="" height="100vh">
+                    
+                 </v-img>
+                
             </v-flex>
         </v-layout>
     </div>

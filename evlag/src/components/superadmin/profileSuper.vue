@@ -10,45 +10,76 @@
                                 <v-card elevation="0" height="77vh" color="#424242">
                                     <v-layout wrap justify-center>
                                         <v-flex lg12>
-                                            <v-img src="../../assets/images/logo.png" width="75%" style="margin-top:15%;margin-left:13%;"></v-img>
+                                            <v-img src="../../assets/images/logo.png" width="75%" style="margin-top:65%;margin-left:13%;"></v-img>
                                         </v-flex>
-                                        <v-flex lg12>
-                                            <p class="text-h6" style="margin-left:35%;margin-top:35%; color:white">PROFILE</p>
-                                        </v-flex>
+                                        
                                     </v-layout>
                                 </v-card>
                             </v-flex>
                             <v-flex lg8>
-                                <v-layout wrap justify-center>
+                                <v-layout wrap justify-center style="margin-top:10%">
+                                    <v-flex lg12>
+                                        <p style="text-align:center;"><b>PROFILE DETAILS</b></p>
+                                    </v-flex>
+                                </v-layout>
+                                <v-divider></v-divider>
+                                <v-layout wrap justify-center style="margin-top:5%; margin-left:10%">
                                     <v-flex lg6>
-                                        <p style="text-align:center">NAME</p>
+                                        <p style="text-align:left">NAME</p>
                                     </v-flex>
                                     <v-flex lg6>
-                                        <p style="text-align:center">{{userData.name}}</p>
+                                        <p style="text-align:left">Shaun Thomas Ninan</p>
+                                    </v-flex>
+                                </v-layout>
+                                <v-layout wrap justify-center style="margin-top:5%;margin-left:10%">
+                                    <v-flex lg6>
+                                        <p style="text-align:left">ROLE</p>
+                                    </v-flex>
+                                    <v-flex lg6>
+                                        <p style="text-align:left">Super Admin</p>
+                                    </v-flex>
+                                </v-layout>
+                                <v-divider></v-divider>
+                                <v-layout wrap justify-center style="margin-top:5%;margin-left:10%">
+                                    <v-flex lg12>
+                                        <p style="text-align:center"><b>CONTACT DETAILS</b></p>
+                                    </v-flex>
+                                </v-layout>
+                                <v-divider></v-divider>
+                                <v-layout wrap justify-center style="margin-top:5%;margin-left:10%">
+                                    <v-flex lg6>
+                                        <p style="text-align:left">EMAIL</p>
+                                    </v-flex>
+                                    <v-flex lg6>
+                                        <p style="text-align:left">shaunthomas@gmail.com</p>
+                                    </v-flex>
+                                </v-layout>
+                                <v-layout wrap justify-center style="margin-top:5%;margin-left:10%">
+                                    <v-flex lg6>
+                                        <p style="text-align:left">PHONE NUMBER</p>
+                                    </v-flex>
+                                    <v-flex lg6>
+                                        <p style="text-align:left">7894561235</p>
                                     </v-flex>
                                 </v-layout>
                                 <v-layout wrap justify-center>
-                                    <v-flex lg6>
-                                        <p style="text-align:center">ROLE</p>
-                                    </v-flex>
-                                    <v-flex lg6>
-                                        <p style="text-align:center">{{userData.role}}</p>
-                                    </v-flex>
-                                </v-layout>
-                                <v-layout wrap justify-center>
-                                    <v-flex lg6>
-                                        <p style="text-align:center">EMAIL</p>
-                                    </v-flex>
-                                    <v-flex lg6>
-                                        <p style="text-align:center">{{userData.email}}</p>
-                                    </v-flex>
-                                </v-layout>
-                                <v-layout wrap justify-center>
-                                    <v-flex lg6>
-                                        <p style="text-align:center">PHONE NUMBER</p>
-                                    </v-flex>
-                                    <v-flex lg6>
-                                        <p style="text-align:center">{{userData.phoneNumber}}</p>
+                                    <v-flex lg12 style="margin-top:20%">
+                                        <v-row
+                                            align="center"
+                                            justify="space-around"
+                                        >
+                                            <v-btn
+                                            tile
+                                            color="#0e6afc"
+                                            @click="pushto(userData)"
+                                            style="font-size:10px"
+                                            >
+                                            <v-icon left>
+                                                mdi-pencil
+                                            </v-icon>
+                                            CHANGE PASSWORD
+                                            </v-btn>
+                                        </v-row>
                                     </v-flex>
                                 </v-layout>
                             </v-flex>
@@ -94,25 +125,7 @@
                             </v-layout>
                         </v-flex>
                     </v-layout> -->
-                    <!-- <v-layout wrap justify-center>
-                        <v-flex lg12 style="margin-top:2%">
-                              <v-row
-                                align="center"
-                                justify="space-around"
-                            >
-                                <v-btn
-                                tile
-                                color="success"
-                                 @click="pushto(userData)"
-                                >
-                                <v-icon left>
-                                    mdi-pencil
-                                </v-icon>
-                                UPDATE PASSWORD
-                                </v-btn>
-                            </v-row>
-                        </v-flex>
-                    </v-layout> -->
+                    
                 </v-img>
             </v-flex>
         </v-layout>
