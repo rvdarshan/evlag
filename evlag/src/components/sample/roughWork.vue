@@ -1,8 +1,8 @@
 <template>
     <div>
-        <v-layout>
+        <v-layout wrap>
             <v-flex>
-                
+
             </v-flex>
         </v-layout>
     </div>
