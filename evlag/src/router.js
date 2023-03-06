@@ -68,6 +68,12 @@ let router = new Router({
                 props:true,
                 component:()=>
                     import('./components/superadmin/userLog')
+            },
+            {
+                path:'/roughwork',
+                props:true,
+                component:()=>
+                    import('./components/sample/roughWork')
             }
 
         ]
