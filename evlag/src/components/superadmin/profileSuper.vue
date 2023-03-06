@@ -28,7 +28,7 @@
                                         <p style="text-align:left">NAME</p>
                                     </v-flex>
                                     <v-flex lg6>
-                                        <p style="text-align:left">Shaun Thomas Ninan</p>
+                                        <p style="text-align:left">{{userData.name}}</p>
                                     </v-flex>
                                 </v-layout>
                                 <v-layout wrap justify-center style="margin-top:5%;margin-left:10%">
@@ -36,7 +36,7 @@
                                         <p style="text-align:left">ROLE</p>
                                     </v-flex>
                                     <v-flex lg6>
-                                        <p style="text-align:left">Super Admin</p>
+                                        <p style="text-align:left">{{userData.role}}</p>
                                     </v-flex>
                                 </v-layout>
                                 <v-divider></v-divider>
@@ -51,7 +51,7 @@
                                         <p style="text-align:left">EMAIL</p>
                                     </v-flex>
                                     <v-flex lg6>
-                                        <p style="text-align:left">shaunthomas@gmail.com</p>
+                                        <p style="text-align:left">{{userData.email}}</p>
                                     </v-flex>
                                 </v-layout>
                                 <v-layout wrap justify-center style="margin-top:5%;margin-left:10%">
@@ -59,7 +59,7 @@
                                         <p style="text-align:left">PHONE NUMBER</p>
                                     </v-flex>
                                     <v-flex lg6>
-                                        <p style="text-align:left">7894561235</p>
+                                        <p style="text-align:left">{{userData.phoneNumber}}</p>
                                     </v-flex>
                                 </v-layout>
                                 <v-layout wrap justify-center>

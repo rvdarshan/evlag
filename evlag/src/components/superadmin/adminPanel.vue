@@ -9,7 +9,7 @@
                             width="256"
                             class="mx-auto"
                         > -->
-                            <v-navigation-drawer permanent fixed style="margin-top: 4.2%">
+                            <v-navigation-drawer background-color="grey-darken-3" permanent fixed style="margin-top: 4.2%">
                             <v-list-item >
                                 <v-list-item-content>
                                 <v-list-item-title class="text-h6">
@@ -22,31 +22,36 @@
                             </v-list-item>
 
                             <v-divider></v-divider>
-                            
+                            <v-tabs 
+                                vertical slider-color="white">
                             <v-list
                                 dense
                                 nav
                                 v-for="item in items"
                                 :key="item.title"
                                 link
+                              
                             >
+                            
                             <router-link :to="item.link" style="text-decoration:none;color:black;">
                                 <v-list-item
                                 
                                 >
-                                
+                                <v-tab background-color="grey-darken-3" >
                                 <v-list-item-icon>
-                                    <v-icon>{{ item.icon }}</v-icon>
+                                    <v-icon left>{{ item.icon }}</v-icon>
                                 </v-list-item-icon>
 
                                 <v-list-item-content>
                                     <v-list-item-title>{{ item.title }}</v-list-item-title>
                                 </v-list-item-content>
-                                
+                                 </v-tab>
                                 </v-list-item>
                                 </router-link>
+                               
                                 <v-divider></v-divider>
                             </v-list>
+                            </v-tabs>
                             </v-navigation-drawer>
                         <!-- </v-card> -->
                     </v-flex>
@@ -70,7 +75,7 @@
           { title: 'PROFILE', icon: 'mdi-account', link:'profilesuper' },
           { title: 'ADD NEW SECURITY', icon:'mdi-account-plus', link:'securityregistration' },
           { title: 'SECURITY LIST', icon:'mdi-account-group-outline', link:'securitylist' },
-          { title: 'SECURITY ALLOCATION', icon:'mdi-bell-outline', link:'securityallocation' },
+        //   { title: 'SECURITY ALLOCATION', icon:'mdi-bell-outline', link:'securityallocation' },
           { title: "VISITOR'S LOG", icon:'mdi-book-open', link:'userlog' },
         ],
         

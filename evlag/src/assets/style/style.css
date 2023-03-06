@@ -26,3 +26,19 @@
 .logo{
     size:30px;
 }
+.my-element {
+    display: inline-block;
+    margin: 0 0.5rem;
+  
+    animation: bounce; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 3.5s; /* don't forget to set a duration! */
+  }
+  .h1-element {
+    display: inline-block;
+    margin-left: 7%;
+    margin-top: 9%;
+    animation: flash; /* referring directly to the animation's @keyframe declaration */
+    animation-duration: 4s; /* don't forget to set a duration! */
+    color:white;
+    text-align: center;
+  }

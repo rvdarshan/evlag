@@ -15,7 +15,7 @@
                                 <v-text-field
                                     v-model="search"
                                     append-icon="mdi-magnify"
-                                    label="search"
+                                    label="SEARCH SECURITY NAME"
                                     single-line
                                     hide-details
                                     outlined
