@@ -69,7 +69,7 @@ export default {
     
       email: '',
       password: '',
-      show1: 'false',
+      show1: 'true',
       show2: 'true',
       show3: 'false',
       show4: 'false',

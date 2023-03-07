@@ -1,5 +1,27 @@
 <template>
     <div>
+        
+                <div class="text-center">
+
+                    <v-snackbar
+                    v-model="snackbar"
+                    :multi-line="multiLine"
+                    >
+                    {{ text }}
+
+                    <template v-slot:action="{ attrs }">
+                        <v-btn
+                        color="red"
+                        text
+                        v-bind="attrs"
+                        @click="snackbar = false"
+                        >
+                        Close
+                        </v-btn>
+                    </template>
+                    </v-snackbar>
+                </div>
+
         <v-layout wrap justify-center>
             <v-flex style="background-color:#545454"  scroll lg12>
                 <v-img src="" height="100vh">
@@ -28,21 +50,6 @@
                                     style="margin-top: 20%"
                                     v-model="name"
                                     :rules="nameRules"
-                                    required
-                                ></v-text-field>
-                                   
-                    </v-flex>
-                </v-layout>
-                <v-layout wrap justify-center>
-                    <v-flex lg8>
-                        
-                                <v-text-field
-                                    label="SECURITY ID"
-                                    outlined
-                                    dense 
-                                    style="margin-top: 3%"
-                                    v-model="securityId"
-                                    
                                     required
                                 ></v-text-field>
                                    
@@ -95,13 +102,31 @@
                     </v-flex>
                 </v-layout>
                 <v-layout wrap justify-center>
+                    <v-flex lg8>
+                        <v-text-field
+                                            v-model="confirmpassword"
+                                            prepend-inner-icon="mdi-lock"
+                                            :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                                            :rules="[rules.required, rules.min]"
+                                            :type="show1 ? 'text' : 'password'"
+                                            name="input-10-1"
+                                            label="CONFIRM PASSWORD"
+                                            @click:append="show1 = !show1"
+                                            outlined
+                                            dense
+                                            style="margin-top: 3%"  
+                                           
+                                            ></v-text-field>
+                    </v-flex>
+                </v-layout>
+                <v-layout wrap justify-center>
                     <v-flex lg5 style="margin-top:5%">
                         <v-btn
                             class="ma-2"
                             align='center'
                             color="success"
-                            @click="create()"
-      
+                            
+                            @click="snackbar = true;create()"
                          >CREATE ACCOUNT</v-btn>
                     </v-flex>
                 </v-layout>
@@ -131,6 +156,10 @@ export default {
         ],
         email: '',
         phoneNumber:'',
+        confirmpassword:'',
+        multiLine: true,
+        snackbar: false,
+        text: `Passwords does not Match!`,
         securityId:'',
         emailRules: [
             v => !!v || 'E-mail is required',
@@ -153,11 +182,12 @@ export default {
     methods:{
         create()
         {
-            // if(this.$refs.file.validate())
-            // {
+            if(this.password==this.confirmpassword)
+            {
+            
             axios({
                 method:'post',
-                url:this.baseURL+'/superAdmin/addSecurity',
+                url:this.baseURL+'/superAdminn/addSecurity',
                 headers:{
                     token: localStorage.getItem('Token')                   
                 },
@@ -178,7 +208,10 @@ export default {
             }).catch((error)=>{
                 console.log(error);
             })
-            
+            }
+            else{
+                this.snackbar=true;
+            }
         },
     }
     

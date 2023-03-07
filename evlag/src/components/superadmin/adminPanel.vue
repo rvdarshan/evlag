@@ -72,10 +72,10 @@
       return {
         items: [
           { title: 'DASHBOARD', icon: 'mdi-view-dashboard', link:'dashboard' },
-          { title: 'PROFILE', icon: 'mdi-account', link:'profilesuper' },
+          
           { title: 'ADD NEW SECURITY', icon:'mdi-account-plus', link:'securityregistration' },
           { title: 'SECURITY LIST', icon:'mdi-account-group-outline', link:'securitylist' },
-        //   { title: 'SECURITY ALLOCATION', icon:'mdi-bell-outline', link:'securityallocation' },
+          { title: 'SECURITY ROUTING', icon:'mdi-bell-outline', link:'securityallocation' },
           { title: "VISITOR'S LOG", icon:'mdi-book-open', link:'userlog' },
         ],
         

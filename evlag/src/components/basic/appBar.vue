@@ -26,8 +26,16 @@
           style="margin-left:5%"
         />
       </div>
-
       <v-spacer></v-spacer>
+        <v-btn
+          link
+          to="/profilesuper"
+        >
+        <v-icon>mdi-account</v-icon>
+        <span class="mr-2">PROFILE</span>
+        </v-btn>
+      
+      
 
       <v-btn
         @click="logout()"

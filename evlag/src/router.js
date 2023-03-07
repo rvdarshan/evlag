@@ -74,7 +74,13 @@ let router = new Router({
                 props:true,
                 component:()=>
                     import('./components/sample/roughWork')
-            }
+            },
+            {
+                path:'/securityedit',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/securityEdit')
+            },
 
         ]
     }
