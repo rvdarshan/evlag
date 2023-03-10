@@ -10,6 +10,20 @@ let router = new Router({
             import('./components/basic/loginAdmin')
     },
     {
+        path:'/500error',
+        props:true,
+        component:()=>
+            import('./components/sample/500Page'),
+
+    },
+    {
+        path:'/404error',
+        props:true,
+        component:()=>
+            import('./components/sample/404Page'),
+            
+    },
+    {
         path:'/admin',
         name:'admin',
         component:()=>
@@ -81,6 +95,13 @@ let router = new Router({
                 component:()=>
                     import('./components/superadmin/securityEdit')
             },
+            {
+                path:'/completed',
+                props:true,
+                component:()=>
+                    import('./components/sample/comPleted')
+            },
+            
 
         ]
     }
