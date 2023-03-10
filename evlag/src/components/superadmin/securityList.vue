@@ -1,85 +1,76 @@
 <template>
-    <div>
-        <v-layout wrap justify-center>
-            <v-flex lg12 style="background-color:#545454"  scroll>
-                <v-layout wrap justify-center>
-                        <v-flex lg8>
-                            
-                        </v-flex>
-                </v-layout>
-                <v-layout wrap justify-center>
-                    <v-flex lg12>
-                        <v-card>
-                            <v-card-title>SECURITY LIST
-                                <v-spacer></v-spacer>
-                                <v-text-field
-                                    v-model="search"
-                                    append-icon="mdi-magnify"
-                                    label="SEARCH SECURITY NAME"
-                                    single-line
-                                    hide-details
-                                    outlined
-                                    dense
-                                ></v-text-field>
-                                <v-spacer></v-spacer>
-                            </v-card-title>
-                            <v-data-table
-                            fixed-header
-                            height="700px"
-                                :headers="headers"
-                                :items="userdata"
-                                :search="search"
-                            >
-                                <template v-slot:top>
-                                    <v-toolbar
-                                        flat
-                                    >
-                                       
-                                        <v-dialog v-model="dialogDelete" max-width="500px">
-                                        <v-card>
-                                            <v-card-title class="text-h5">Are you sure you want to delete this item?</v-card-title>
-                                            <v-card-actions>
-                                            <v-spacer></v-spacer>
-                                            <v-btn color="blue darken-1" text @click="closeDelete">Cancel</v-btn>
-                                            <v-btn color="blue darken-1" text @click="deleteItemConfirm">OK</v-btn>
-                                            <v-spacer></v-spacer>
-                                            </v-card-actions>
-                                        </v-card>
-                                        </v-dialog>
-                                    </v-toolbar>
-                                    </template>
-                                    <template>
-                                    <!-- <v-icon
-                                        small
-                                        class="mr-2"
-                                        @click="editItem(item)"
-                                    >
-                                        mdi-pencil
-                                    </v-icon> -->
-                                    <v-icon
-                                        small
-                                        @click="deleteItem(item)"
-                                    >
-                                        mdi-delete
-                                    </v-icon>
-                                    </template>
-                            </v-data-table>
-                        </v-card>
-                    </v-flex>
-                </v-layout>
+  <div>
+    <!-- <vue-element-loading
+      :active="isLoading"
+      is-full-screen
+      color="grey"
+      spinner="bar-fade-scale"
+    />
+    <ServerError v-if="ServerError" /> -->
+    <v-layout wrap justify-center >
+      <v-flex xs12 text-center>
+        <v-card>
+          <v-card-title>
+            SECURITY LIST
+            <v-spacer></v-spacer>
+            <v-text-field
+              v-model="search"
+              append-icon="mdi-magnify"
+              label="SEARCH SECURITY NAME"
+              single-line
+              hide-details
+              outlined
+              dense
+            >
+            </v-text-field>            
+          </v-card-title>
+                <v-data-table :headers="headers" :items="userdata" :search="search" fixed-header>
+                    <template v-slot:[`item._id`]="{ item }">
+                    <v-btn icon color="red" @click="myDialog = true; myItem = item._id;">
+                        <v-icon> mdi-delete </v-icon>
+                    </v-btn>
+                
+                    </template>
+                </v-data-table>
+                </v-card>
             </v-flex>
-        </v-layout>
-    </div>
+            </v-layout>
+                <v-snackbar v-model="snackbar" :timeout="timeout" width="300">
+                    {{ text }}
+                  </v-snackbar>
+                <v-dialog v-model="myDialog" max-width="450">
+                <v-card>
+                  <v-card-title class="text-h5"> Are you sure to delete this account? </v-card-title>
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="blue darken-1" text @click="myDialog = false;">Cancel</v-btn>
+                    <v-btn
+                      color="red darken-1"
+                      text
+                      @click="                      
+                        removeData();
+                      "
+                      >Delete</v-btn
+                    >
+                  </v-card-actions>
+                </v-card>
+              </v-dialog>
+  </div>
 </template>
-
 <script>
 import axios from 'axios';
 export default {
     data(){
         return{
-            search:'',
+            myItem : null,
+            isLoading: false,
             dialog: false,
-            dialogDelete: false,
+            timeout:1000,
+            snackbar: false,
+            text: "",
+            myDialog:false,
+            search: "",
+            ServerError: false,
             userdata:[],
             headers: [
                 {
@@ -99,20 +90,13 @@ export default {
                     text:'PHONE',value:'securityPhoneNumber'
                 },
                 {
-                    text:'ACTION',value: 'actions',sortable: false 
+                    text: "Actions", value:'_id', sortable: false, width: "20%" 
                 },
 
             ]
         }
     },
-    watch: {
-      dialog (val) {
-        val || this.close()
-      },
-      dialogDelete (val) {
-        val || this.closeDelete()
-      },
-    },
+    
     mounted(){
         this.getData();
     },
@@ -125,9 +109,7 @@ export default {
                 headers:{
                     token:localStorage.getItem("Token"),
                 },
-                params:{
-                    id:localStorage.getItem("ID"),
-                },
+                
 
             }).then((response)=>{
                 if(response.data.status)
@@ -143,33 +125,41 @@ export default {
                 console.log(error)
             })
         },
-        deleteItem (item) {
-        this.editedIndex = this.desserts.indexOf(item)
-        this.editedItem = Object.assign({}, item)
-        this.dialogDelete = true
-      },
+        removeData() {
+      this.isLoading = true;
+      axios({
+        method: "post",
+        url: "/security/delete",
+        headers: {
+          token:localStorage.getItem("Token"),
+        },
+         data: {
+          id: this.myItem,
+        },
+      })
+        .then((response) => {
+            this.myDialog = false;
+          this.isLoading = false;
 
-      deleteItemConfirm () {
-        this.desserts.splice(this.editedIndex, 1)
-        this.closeDelete()
-      },
-      close () {
-        this.dialog = false
-        this.$nextTick(() => {
-          this.editedItem = Object.assign({}, this.defaultItem)
-          this.editedIndex = -1
+          if (response.data.status) {
+            this.snackbar = true;
+            this.text = "Successfully Deleted";
+            setTimeout(()=>this.getData(),1000); 
+          } else {
+            this.isLoading = false;
+            this.snackbar = true;
+            this.text = response.data.msg;
+            console.log(response.data.msg);
+          }
         })
-      },
-
-      closeDelete () {
-        this.dialogDelete = false
-        this.$nextTick(() => {
-          this.editedItem = Object.assign({}, this.defaultItem)
-          this.editedIndex = -1
-        })
-      },
+        .catch((error) => {
+          this.isLoading = false;
+          this.ServerError = true;
+          console.log(error);
+        });
+    },
+        
         
     }
 }
 </script>
-
