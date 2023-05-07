@@ -60,7 +60,7 @@
 <script>
 import axios from 'axios';
 export default {
-    data(){
+    data(){ 
         return{
             myItem : null,
             isLoading: false,
@@ -134,7 +134,7 @@ export default {
           token:localStorage.getItem("Token"),
         },
          data: {
-          id: this.myItem,
+          id: this.myItem
         },
       })
         .then((response) => {
@@ -158,8 +158,9 @@ export default {
           console.log(error);
         });
     },
+    }
         
         
     }
-}
+
 </script>

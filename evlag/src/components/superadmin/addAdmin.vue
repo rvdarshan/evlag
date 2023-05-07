@@ -1,34 +1,13 @@
 <template>
     <div>
         
-                <div class="text-center">
-
-                    <v-snackbar
-                    v-model="snackbar"
-                    :multi-line="multiLine"
-                    >
-                    {{ text }}
-
-                    <template v-slot:action="{ attrs }">
-                        <v-btn
-                        color="red"
-                        text
-                        v-bind="attrs"
-                        @click="snackbar = false"
-                        >
-                        Close
-                        </v-btn>
-                    </template>
-                    </v-snackbar>
-                </div>
-
         <v-layout wrap justify-center>
-            <v-flex style="background-color:#545454"  scroll lg12>
+            <v-flex style="background-color:#545454" lg12>
                 <v-img src="" height="100vh">
-                <v-card elevation="10" width="60%" height="82%" style="margin-left:20%; margin-top:2%">
+                <v-card elevation="10" width="60%" height="90%" style="margin-left:20%; margin-top:2%">
                         <v-layout wrap justify-center>
                             <v-flex lg4>
-                                <v-card elevation="0" height="82vh" color="#424242">
+                                <v-card elevation="0" height="90vh" color="#424242">
                                     <v-layout wrap justify-center>
                                         <v-flex lg12>
                                             <v-img src="../../assets/images/logo.png" width="75%" style="margin-top:65%;margin-left:13%;"></v-img>
@@ -50,6 +29,20 @@
                                     style="margin-top: 10%"
                                     v-model="name"
                                     :rules="nameRules"
+                                    required
+                                ></v-text-field>
+                                   
+                    </v-flex>
+                </v-layout>
+                <v-layout wrap justify-center>
+                    <v-flex lg8>
+                        
+                                <v-text-field
+                                    label="DESIGNATION"
+                                    outlined
+                                    dense 
+                                    style="margin-top: 2%"
+                                    v-model="designation"
                                     required
                                 ></v-text-field>
                                    
@@ -150,13 +143,10 @@
 
                 </v-card>
                 </v-img>
-                 <!-- 
-                 -->
             </v-flex>
         </v-layout>
     </div>
 </template>
-
 <script>
 import axios from 'axios';
 import ImgComp from "./imagePage";
@@ -205,16 +195,16 @@ export default {
             
             axios({
                 method:'post',
-                url:this.baseURL+'/superAdminn/addSecurity',
+                url:this.baseURL+'/superAdminn/addAdmin',
                 headers:{
                     token: localStorage.getItem('Token')                   
                 },
                 data:{
-                    securityName:this.name,
-                    securityPhoneNumber:this.phoneNumber,
-                    securityEmail:this.email,
-                    securityId:this.securityId,
-                    securityPassword:this.password,
+                    adminName:this.name,
+                    adminPhoneNumber:this.phoneNumber,
+                    adminEmail:this.email,
+                    adminDesignation:this.securityId,
+                    adminPassword:this.password,
                     id:this.$route.query.id
                 }
             }).then((response)=>{

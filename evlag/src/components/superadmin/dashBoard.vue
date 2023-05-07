@@ -8,7 +8,7 @@
                             <v-img class="my-element" src="../../assets/images/logo-no-background.png" width="15%" style="margin-left:42.8%; margin-top:15%"></v-img>
                         </v-flex>
                     </v-layout>
-                    <v-layout wrap justify-center>
+                    <!-- <v-layout wrap justify-center>
                                     <v-flex lg11>
                                         <v-layout wrap justify-center>
                                             <v-flex lg4>
@@ -22,7 +22,7 @@
                                             </v-flex>
                                         </v-layout>
                                     </v-flex>
-                                </v-layout>
+                                </v-layout> -->
                     
                 </v-img>
                 

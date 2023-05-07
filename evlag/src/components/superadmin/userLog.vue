@@ -23,7 +23,7 @@
                                 header-fixed
                                 height="700px"
                                 :headers="headers"
-                                :items="securitydata"
+                                :items="userdata"
                                 :search="search"
                                 
                             ></v-data-table>
@@ -36,45 +36,102 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data(){
         return{
             search:'',
-            securitydata:[],
+            userdata:[],
             headers: [
                 {
                     text:'DATE',
                     align:'start',
                     sortable:true,
+                    value:'visitedDate',
 
                 },
                  {
                     text:'NAME',
                     sortable:false,
+                    value:'visitorName'
+                },
+                {
+                    text:'GENDER',
+                    sortable:false,
+                    value:'visitorGender'
+                },
+                {
+                    text:'ADDRESS',
+                    sortable:false,
+                    value:'visitorAddress'
                 },
                 {
                     text:'PHONE',
                     sortable:false,
-                },
-                {
-                    text:'EMAIL',
-                    sortable:false,
+                    value:'visitorPhoneNumber',
                 },
                 {
                     text:'VEHICLE NO',
                     sortable:false,
+                    value:'visitorVehicleNumber',
                 },
                 {
                     text:'IN-TIME',
                     sortable:false,
+                    value:'enterTime'
                 },
                 {
                     text:'OUT-TIME',
                     sortable:false,
+                    value:'exitTime',
+                },
+                {
+                    text:'PURPOSE',
+                    sortable:false,
+                    value:'visitorPurpose'
+                },
+                {
+                    text:'OTHER PURPOSE',
+                    sortable:false,
+                    value:'otherPurpose'
+                },
+                {
+                    text:'STATUS',
+                    sortable:false,
+                    value:'status'
                 },
 
             ]
         }
-    }
+    },
+    mounted(){
+        this.getData();
+    },
+    methods:{
+        getData()
+        {
+            axios({
+                method:'get',
+                url:this.baseURL+'/view/allvisitors',
+                headers:{
+                    token:localStorage.getItem("Token"),
+                },
+                
+
+            }).then((response)=>{
+                if(response.data.status)
+                {
+                    console.log("responded");
+                    this.userdata=response.data.data;
+                }
+                else{
+                    alert("Something went wrong")
+                }
+            })
+            .catch((error)=>{
+                console.log(error)
+            })
+        },
+    },
 }
 </script>

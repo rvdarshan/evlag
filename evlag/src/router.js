@@ -78,6 +78,18 @@ let router = new Router({
                     import('./components/superadmin/securityUpdate')
             },
             {
+                path:'/addadmin',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/addAdmin')
+            },
+            {
+                path:'./addlocation',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/addLocation')
+            },
+            {
                 path:'/userlog',
                 props:true,
                 component:()=>
@@ -94,6 +106,12 @@ let router = new Router({
                 props:true,
                 component:()=>
                     import('./components/superadmin/securityEdit')
+            },
+            {
+                path:'/securityallocation',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/securityAllocation')
             },
             {
                 path:'/completed',

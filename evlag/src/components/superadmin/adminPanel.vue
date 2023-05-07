@@ -23,7 +23,8 @@
 
                             <v-divider></v-divider>
                             <v-tabs 
-                                vertical slider-color="white">
+                                vertical slider-color="white" grow v-model="active_tab" >
+                                
                             <v-list
                                 dense
                                 nav
@@ -48,9 +49,10 @@
                                  </v-tab>
                                 </v-list-item>
                                 </router-link>
-                               
-                                <v-divider></v-divider>
+                               <v-divider style="margin-bottom:-5%"></v-divider>
+                                
                             </v-list>
+                            <v-divider ></v-divider>
                             </v-tabs>
                             </v-navigation-drawer>
                         <!-- </v-card> -->
@@ -71,12 +73,13 @@
     data () {
       return {
         items: [
-          { title: 'DASHBOARD', icon: 'mdi-view-dashboard', link:'dashboard' },
-          
+          { title: 'DASHBOARD', icon: 'mdi-view-dashboard', link:'dashboard' },    
           { title: 'ADD NEW SECURITY', icon:'mdi-account-plus', link:'securityregistration' },
           { title: 'SECURITY LIST', icon:'mdi-account-group-outline', link:'securitylist' },
-          { title: 'SECURITY ROUTING', icon:'mdi-bell-outline', link:'securityallocation' },
+          { title: 'SECURITY POSTING', icon:'mdi-bell-outline', link:'securityallocation' },
           { title: "VISITOR'S LOG", icon:'mdi-book-open', link:'userlog' },
+          { title: 'ADD NEW ADMIN', icon:'mdi-account-plus',link:'addadmin'},
+          { title: 'ADD LOCATION', icon:'mdi-map-marker-plus', link:'addlocation'},
         ],
         
       }
