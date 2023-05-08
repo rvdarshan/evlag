@@ -84,7 +84,7 @@ let router = new Router({
                     import('./components/superadmin/addAdmin')
             },
             {
-                path:'./addlocation',
+                path:'/addlocation',
                 props:true,
                 component:()=>
                     import('./components/superadmin/addLocation')
