@@ -14,8 +14,8 @@
         </v-flex>
       </v-layout>
     </v-snackbar>
-    <v-layout wrap >
-      <v-flex xs12 md12 align-self-center >
+    <v-layout wrap>
+      <v-flex xs12 md12 align-self-center>
         <v-card
           style="border: 1px solid #cccccc"
           outlined
@@ -30,17 +30,14 @@
               </span> -->
             </v-flex>
             <v-flex xs1 align-self-center text-right>
-              <!-- <v-img
+              <v-img
+                v-if="!singleImage && !resultImage"
                 style="cursor: pointer"
                 height="15px"
                 src="./../../assets/iconsets/file-upload.svg"
-                contain
-              /> -->
-
-              <v-icon
-                v-if="!singleImage && !resultImage"
                 @click="$refs.files.click()"
-                >mdi-upload</v-icon>
+                contain
+              />
             </v-flex>
           </v-layout>
           <v-dialog
@@ -75,15 +72,11 @@
                   </v-flex>
                 </v-layout>
               </v-card-title>
-              <!-- :stencil-props="{
-                  aspectRatio: width / height,
-                }" -->
               <Cropper
+                ref="cropper"
                 :stencil-props="{
                   aspectRatio: width / height,
                 }"
-                ref="cropper"
-                style="height: 200px !important"
                 class="example-cropper"
                 :src="image"
               />
@@ -93,36 +86,24 @@
                     <v-btn
                       small
                       :ripple="false"
-                      color="#313563"
+                      color="#68D389"
                       class="py-2 px-5"
                       @click="cropImage"
                     >
-                      <span style="color: #ffffff; font-family:  pregular"
+                      <span style="color: #ffffff; font-family: poppinsregular"
                         >Crop</span
                       ></v-btn
                     >
-                  </v-flex>
-                  <v-flex xs3 md3>
-                    <v-btn
-                      small
-                      :ripple="false"
-                      color="#313563"
-                      class="py-2 px-5"
-                      @click="rotateImage"
-                      ><span style="color: #ffffff; font-family:  pregular"
-                        >Rotate image
-                      </span>
-                    </v-btn>
                   </v-flex>
                   <v-flex md3 xs3>
                     <v-btn
                       small
                       :ripple="false"
-                      color="#313563"
+                      color="#68D389"
                       class="py-2 px-3"
                       @click="$refs.files.click()"
                     >
-                      <span style="color: #ffffff; font-family:  pregular"
+                      <span style="color: #ffffff; font-family: poppinsregular"
                         >Change Image</span
                       ></v-btn
                     >
@@ -131,10 +112,8 @@
               </v-card-actions>
             </v-card>
           </v-dialog>
-          <v-layout wrap>
-            
-            <v-flex xs12 md5 pa-2>
-              
+          <v-layout wrap justify-space-between pa-4>
+            <v-flex xs12 md9 pa-1>
               <v-img
                 v-if="singleImage && !resultImage"
                 :src="mediaURL + singleImage"
@@ -157,8 +136,9 @@
                   >
                     <span
                       style="
-                        font-size: 8px;
+                        font-size: 12px;
                         text-align: end;
+                        font-family: poppinsregular;
                         letter-spacing: 0px;
                         color: #000000;
                         opacity: 1;
@@ -195,7 +175,6 @@ export default {
     "width",
     "heading",
     "componentType",
-    "index",
   ],
   components: {
     Cropper,
@@ -214,51 +193,48 @@ export default {
   },
 
   methods: {
-    rotateImage() {
-      this.$refs.cropper.rotate(90);
+    cropImage() {
+      var imageData = this.dataURLtoFile(
+        this.$refs.cropper.getResult().canvas.toDataURL("image/jpeg", 0.3),
+        "myimage.jpg"
+      );
+      console.log("imageData", imageData);
+
+      this.resultImage = URL.createObjectURL(imageData);
+      this.isCropper = false;
+      this.$emit("stepper", {
+        type: this.componentType,
+        selectedFiles: imageData,
+      });
     },
-    // cropImage() {
-     
-    //   var imageData = this.dataURLtoFile(
-    //     this.$refs.cropper.getResult().canvas.toDataURL("image/jpeg", 0.3),
-    //     "myimage.jpg"
-    //   );
-    //   console.log("imageData", imageData);
-    //   this.resultImage = URL.createObjectURL(imageData);
-    //   this.isCropper = false;
-    //   this.$emit("stepper", {
-    //     type: this.componentType,
-    //     selectedFiles: imageData,
-    //     index: this.index,
-    //   });
-    // },
-    // dataURLtoFile(dataurl, filename) {
-    //   var arr = dataurl.split(","),
-    //     mime = arr[0].match(/:(.*?);/)[1],
-    //     bstr = atob(arr[1]),
-    //     n = bstr.length,
-    //     u8arr = new Uint8Array(n);
-    //   while (n--) {
-    //     u8arr[n] = bstr.charCodeAt(n);
-    //   }
-    //   return new File([u8arr], filename, { type: mime });
-    // },
-    // browseImage(event) {
-    //   var img;
-    //   img = new Image();
-    //   img.src = window.URL.createObjectURL(event.target.files[0]);
-    //   var ty = event.target.files[0];
-    //   if (ty.size > 3145728) {
-    //     this.msg = "File size Should be less than 3MB";
-    //     this.showSnackBar = true;
-    //     return;
-    //   } else {
-    //     img.onload = () => {
-    //       this.isCropper = true;
-    //       this.image = URL.createObjectURL(event.target.files[0]);
-    //     };
-    //   }
-    // },
+    dataURLtoFile(dataurl, filename) {
+      var arr = dataurl.split(","),
+        mime = arr[0].match(/:(.*?);/)[1],
+        bstr = atob(arr[1]),
+        n = bstr.length,
+        u8arr = new Uint8Array(n);
+      while (n--) {
+        u8arr[n] = bstr.charCodeAt(n);
+      }
+      return new File([u8arr], filename, { type: mime });
+    },
+    browseImage(event) {
+      var img;
+      img = new Image();
+      img.src = window.URL.createObjectURL(event.target.files[0]);
+      var ty = event.target.files[0];
+      if (ty.size > 3145728) {
+        this.msg = "File size Should be less than 3MB";
+        this.showSnackBar = true;
+        return;
+      } else {
+        img.onload = () => {
+          this.isCropper = true;
+          this.image = URL.createObjectURL(event.target.files[0]);
+        };
+      }
+    },
   },
 };
 </script>
+            

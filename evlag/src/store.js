@@ -18,5 +18,9 @@ export default new Vuex.Store({
         {
             state.phoneNumber=item;
         },
+        Designation(state,item)
+        {
+            state.Designation=item;
+        }
     }
 })

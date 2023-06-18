@@ -19,7 +19,7 @@
                                 ></v-text-field>
                                 
                                 <v-spacer></v-spacer>
-                                <v-btn color="black" @click="saveAsPDF()"><p style="margin-top:30%;color:white">PRINT</p></v-btn>
+                                <!-- <v-btn color="black" @click="saveAsPDF()"><p style="margin-top:30%;color:white">PRINT</p></v-btn> -->
                             </v-card-title>
                             <v-data-table
                                 header-fixed
@@ -57,28 +57,15 @@ export default {
                  {
                     text:'NAME',
                     sortable:false,
-                    value:'visitorName'
+                    value:'securityName'
                 },
+               
                 {
-                    text:'GENDER',
+                    text:'allocated Place',
                     sortable:false,
-                    value:'visitorGender'
+                    value:'allocatedPlace'
                 },
-                {
-                    text:'ADDRESS',
-                    sortable:false,
-                    value:'visitorAddress'
-                },
-                {
-                    text:'PHONE',
-                    sortable:false,
-                    value:'visitorPhoneNumber',
-                }, 
-                {
-                    text:'VEHICLE NO',
-                    sortable:false,
-                    value:'visitorVehicleNumber',
-                },
+                
                 {
                     text:'IN-TIME',
                     sortable:false,
@@ -89,16 +76,7 @@ export default {
                     sortable:false,
                     value:'exitTime',
                 },
-                {
-                    text:'PURPOSE',
-                    sortable:false,
-                    value:'visitorPurpose'
-                },
-                {
-                    text:'OTHER PURPOSE',
-                    sortable:false,
-                    value:'otherPurpose'
-                },
+                
                 {
                     text:'STATUS',
                     sortable:false,
@@ -116,7 +94,7 @@ export default {
         {
             axios({
                 method:'get',
-                url:this.baseURL+'/view/allvisitors',
+                url:this.baseURL+'/view/',
                 headers:{
                     token:localStorage.getItem("Token"),
                 },

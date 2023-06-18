@@ -4,8 +4,9 @@
     <v-main>
       
         <v-layout wrap>
-          <v-flex xs12><navBar v-if="$route.path!='/'"/></v-flex>
-          <v-flex xs12> 
+          <v-flex xs12><navBar v-if="$route.path!='/login' && $route.path!='/admin'  && $route.path!='/navigation' && $route.path!='/' && $route.path!='/admindash' && $route.path!='/appointment' && $route.path!='/adminprofile' && $route.path!='/loguser'"/></v-flex>
+          <v-flex xs12>
+            <v-flex lg12><appBar v-if="$route.path!='/login' && $route.path!='/' && $route.path!='/navigation'  && $route.path!='/superadmin' && $route.path!='/dashboard' && $route.path!='/profilesuper' && $route.path!='/securitymanagement' && $route.path!='/securityregistration' && $route.path!='/updatepassword' && $route.path!='/securitylist' && $route.path!='/securityprofile' && $route.path!='/securityupdate' && $route.path!='/addadmin' && $route.path!='/addlocation' && $route.path!='/viewallocation' && $route.path!='/userlog' && $route.path!='/securityedit' && $route.path!='/securityallocation'"></appBar></v-flex> 
             <router-view></router-view>
             </v-flex>
         </v-layout>
@@ -19,6 +20,7 @@
 
 <script>
 import navBar from '@/components/basic/appBar.vue'
+import appBar from '@/components/admin/adminBar.vue' 
 import './assets/style/font.css'
 import './assets/style/style.css'
 import axios from 'axios'
@@ -28,6 +30,7 @@ export default {
 
   components: {
     navBar,
+    appBar,
   },
 
   data: () => ({
@@ -55,7 +58,7 @@ export default {
         store.commit("email",response.data.data.email);
         store.commit("phoneNumber",response.data.data.phoneNumber);
         store.commit("name",response.data.data.name);
-        store.commit("role",response.data.data.role);
+        store.commit("role",response.data.data.designation);
         
       })
     }

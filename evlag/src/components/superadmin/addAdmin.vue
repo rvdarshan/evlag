@@ -76,7 +76,7 @@
                                    
                     </v-flex>
                 </v-layout>
-                <v-layout wrap justify-center>
+                <!-- <v-layout wrap justify-center>
                     <v-flex lg8>
                 
                         <ImgComp
@@ -88,7 +88,7 @@
                         />
                         
                     </v-flex>
-                </v-layout>
+                </v-layout> -->
                 <v-layout wrap justify-center>
                     <v-flex lg8>
                         <v-text-field
@@ -149,11 +149,9 @@
 </template>
 <script>
 import axios from 'axios';
-import ImgComp from "./imagePage";
+
 export default {
-    components:{
-        ImgComp
-    },
+   
     data(){
         return{
             valid: true,
@@ -164,6 +162,7 @@ export default {
         email: '',
         phoneNumber:'',
         confirmpassword:'',
+        designation:'',
         imgDoc:'',
         multiLine: true,
         snackbar: false,
@@ -200,11 +199,11 @@ export default {
                     token: localStorage.getItem('Token')                   
                 },
                 data:{
-                    adminName:this.name,
-                    adminPhoneNumber:this.phoneNumber,
-                    adminEmail:this.email,
-                    adminDesignation:this.securityId,
-                    adminPassword:this.password,
+                    name:this.name,
+                    phoneNumber:this.phoneNumber,
+                    email:this.email,
+                    designation:this.designation,
+                    password:this.password,
                     id:this.$route.query.id
                 }
             }).then((response)=>{
@@ -221,27 +220,7 @@ export default {
                 this.snackbar=true;
             }
         },
-        upload()
-        {
-            this.imgDoc.append("id",this.getId);
-            this.imgDoc.append("image",this.securityImage);
-            axios({
-                 method:'post',
-                url:this.baseURL+'/upload/image',
-                headers:{
-                    token: localStorage.getItem('Token')                   
-                },
-                data:{
-                    photo:this.imgDoc,
-                },
-                
-            }).then((response)=>{
-                if(response.data.status)
-                {
-                    console.log("image uploaded")
-                }
-            })
-        }
+        
     }
     
     

@@ -1,11 +1,14 @@
 <template>
     <div>
+         <v-alert v-model="alertVisible" type="success" dismissible dense>
+          Login is Successfull
+        </v-alert>
         <v-layout wrap justify-center>
             <v-flex lg12>
                 <v-img src="../../assets/images/16680.jpg" style="height: 100vh">
                     <v-layout wrap justify-center>
                         <v-flex lg3>
-                            <v-card elevation="15" color="white" style="margin-top: 54%">
+                            <v-card elevation="15" color="white" style="margin-top: 40%">
                                 <v-layout wrap justify-center>
                                     <v-flex lg8 pa-2>
                                         <v-img src="../../assets/images/logo.png"></v-img>
@@ -44,8 +47,23 @@
                                                         outlined
                                                         color="black"
                                                         @click="test()"
+                                                        
                                                         >
-                                                        Submit
+                                                        <p style="font-size:12px;margin-top:12%">SUPERADMIN LOGIN</p>
+                                                        </v-btn>
+                                        </v-flex>
+                                        
+                                    </v-layout>
+                                    <v-layout wrap justify-center text-center>
+                                           
+                                        <v-flex lg12 py-4>
+                                            <v-btn
+                                                        class="ma-2"
+                                                        outlined
+                                                        color="black"
+                                                        @click="admintest()"
+                                                        >
+                                                        <p style="font-size:12px;margin-top:12%">ADMIN LOGIN</p>
                                                         </v-btn>
                                         </v-flex>
                                     </v-layout>
@@ -76,6 +94,7 @@ export default {
       ServerError:false,
       Pagenotfound:false,
       apploading:false,
+      alertVisible: false,
       rules:{
         required: value => !!value || 'Required',
         min: v => v.length >= 3 || 'Min 5 characters',
@@ -109,8 +128,51 @@ export default {
             store.commit("name",response.data.data.name);
             
             
-                this.$router.push('/dashboard');
             
+                this.$router.push('/dashboard');
+                this.alertVisible = true;
+            
+          }
+          else{
+            alert("response data msg");
+          }
+        })
+        .catch((error)=>{
+        //   this.apploading=false;
+        //   this.ServerError=true;
+        //   this.Pagenotfound=true;
+          console.log(error);
+        })
+      
+    //   }
+    },
+    admintest(){
+
+    //   if(this.$refs.file.validate())
+    //   {
+        this.apploading=true,
+        axios({
+          method:'post',
+          url:this.baseURL+'/admin/login',
+          data:{
+            email: this.email,
+            password: this.password,
+          },
+        }).then((response)=>{
+          if(response.data.status)
+          {
+              
+            this.apploading=false,
+            localStorage.setItem("ID",response.data.data._id);
+            localStorage.setItem("Token",response.data.token);
+            store.commit('email',response.data.data.email);
+            store.commit("phoneNumber",response.data.data.phoneNumber);
+            store.commit("name",response.data.data.name);
+            store.commit("Designation",response.data.data.designation)
+            
+            
+                this.$router.push('/admindash');
+                this.alertVisible = true;
             
           }
           else{

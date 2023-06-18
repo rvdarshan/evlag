@@ -4,10 +4,22 @@ Vue.use(Router);
 let router = new Router({
     mode: 'history',
     routes:[{
-        path: '/',
+        path: '/login',
         name: 'login',
         component:()=>
             import('./components/basic/loginAdmin')
+    },
+    {
+        path:'/',
+        name:'landingpage',
+        component:()=>
+            import('./components/basic/landingPage')
+    },
+    {
+        path:'/navigation',
+        name:'navigationPage',
+        component:()=>
+            import('./components/basic/navigationPage')
     },
     {
         path:'/500error',
@@ -26,6 +38,38 @@ let router = new Router({
     {
         path:'/admin',
         name:'admin',
+        component:()=>
+            import('./components/admin/adminBase'),
+        children:[
+            {
+                path:'/admindash',
+                props:true,
+                component:()=>
+                    import('./components/admin/dashBoard')
+            },
+            {
+                path:'/appointment',
+                props:true,
+                component:()=>
+                    import('./components/admin/appointmentVisitor')
+            },
+            {
+                path:'/adminprofile',
+                props:true,
+                component:()=>
+                    import('./components/admin/profileAdmin')
+            },
+            {
+                path:'/loguser',
+                props:true,
+                component:()=>
+                    import('./components/admin/logUser')
+            },
+        ]
+    },
+    {
+        path:'/superadmin',
+        name:'superadmin',
         component:()=>
             import('./components/superadmin/adminPanel'),
         children:[
@@ -53,6 +97,13 @@ let router = new Router({
                 component:()=>
                     import('./components/superadmin/securityRegistration')
             },
+            {
+                path:'/TestPage',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/TestPage')
+            },
+            
             {
                 path:'/updatepassword',
                 props:true,
@@ -88,6 +139,12 @@ let router = new Router({
                 props:true,
                 component:()=>
                     import('./components/superadmin/addLocation')
+            },
+            {
+                path:'/viewallocation',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/viewAllocation')
             },
             {
                 path:'/userlog',

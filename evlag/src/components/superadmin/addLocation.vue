@@ -67,3 +67,41 @@
         </v-layout>
     </div>
 </template>
+<script>
+import axios from 'axios'
+export default {
+    data(){
+        return{
+            latitude:'',
+            longitude:'',
+            locationname:'',
+            locationdescription:'',
+        }
+    },
+    methods:{
+        create(){
+            axios({
+                method:'post',
+                url:'/superAdminn/addLocation',
+                headers:{
+                    token: localStorage.getItem('Token')
+                },
+                data:{
+                    Location:this.locationname,
+                    Description:this.locationdescription,
+                    lat:this.latitude,
+                    long:this.longitude,
+                }
+            }).then((response)=>{
+                if(response.data.status)
+                {
+                    console.log("Location Added")
+                    this.$router.push('./dashboard')
+                }
+            }).catch((error)=>{
+                console.log(error);
+            })
+        }
+    }
+}
+</script>

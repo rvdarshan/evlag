@@ -14,8 +14,8 @@
         </v-flex>
       </v-layout>
     </v-snackbar>
-    <v-layout wrap >
-      <v-flex xs12 md12 align-self-center >
+    <v-layout wrap>
+      <v-flex xs12 md12 align-self-center>
         <v-card
           style="border: 1px solid #cccccc"
           outlined
@@ -25,25 +25,22 @@
           <v-layout wrap justify-center py-2 style="cursor: pointer">
             <v-flex xs11 text-start pl-4>
               <span class="textField1"> {{ heading }} </span><br />
-              <!-- <span class="text">
+              <span class="text">
                 (width {{ width }}px height {{ height }}px)
-              </span> -->
+              </span>
             </v-flex>
             <v-flex xs1 align-self-center text-right>
-              <!-- <v-img
+              <v-img
+                v-if="!singleImage"
                 style="cursor: pointer"
                 height="15px"
                 src="./../../assets/iconsets/file-upload.svg"
-                contain
-              /> -->
-
-              <v-icon
-                v-if="!singleImage && !resultImage"
                 @click="$refs.files.click()"
-                >mdi-upload</v-icon>
+                contain
+              />
             </v-flex>
           </v-layout>
-          <v-dialog
+          <!-- <v-dialog
             v-model="isCropper"
             persistent
             :width="
@@ -58,32 +55,13 @@
             "
           >
             <v-card class="pb-3">
-              <v-card-title class="headline">
-                <v-layout wrap>
-                  <v-flex md3 xs3>
-                    <span> Crop Image</span>
-                  </v-flex>
-                  <v-flex text-right>
-                    <v-btn
-                      small
-                      :ripple="false"
-                      text
-                      @click="isCropper = false"
-                    >
-                      <v-icon style="color: #red">mdi-close</v-icon>
-                    </v-btn>
-                  </v-flex>
-                </v-layout>
-              </v-card-title>
-              <!-- :stencil-props="{
-                  aspectRatio: width / height,
-                }" -->
+              <v-card-title class="headline"> Crop Image </v-card-title>
               <Cropper
-                :stencil-props="{
-                  aspectRatio: width / height,
-                }"
                 ref="cropper"
-                style="height: 200px !important"
+                :max-width="width"
+                :max-height="height"
+                :min-width="width"
+                :min-height="height"
                 class="example-cropper"
                 :src="image"
               />
@@ -93,60 +71,37 @@
                     <v-btn
                       small
                       :ripple="false"
-                      color="#313563"
+                      color="#68D389"
                       class="py-2 px-5"
                       @click="cropImage"
                     >
-                      <span style="color: #ffffff; font-family:  pregular"
-                        >Crop</span
-                      ></v-btn
+                      <span style="color: #ffffff">Crop</span></v-btn
                     >
-                  </v-flex>
-                  <v-flex xs3 md3>
-                    <v-btn
-                      small
-                      :ripple="false"
-                      color="#313563"
-                      class="py-2 px-5"
-                      @click="rotateImage"
-                      ><span style="color: #ffffff; font-family:  pregular"
-                        >Rotate image
-                      </span>
-                    </v-btn>
                   </v-flex>
                   <v-flex md3 xs3>
                     <v-btn
                       small
                       :ripple="false"
-                      color="#313563"
+                      color="#68D389"
                       class="py-2 px-3"
                       @click="$refs.files.click()"
                     >
-                      <span style="color: #ffffff; font-family:  pregular"
-                        >Change Image</span
-                      ></v-btn
+                      <span style="color: #ffffff">Change Image</span></v-btn
                     >
                   </v-flex>
                 </v-layout>
               </v-card-actions>
             </v-card>
-          </v-dialog>
-          <v-layout wrap>
-            
-            <v-flex xs12 md5 pa-2>
-              
+          </v-dialog> -->
+          <v-layout wrap justify-space-between pa-4>
+            <v-flex xs12 md9 pa-1>
               <v-img
                 v-if="singleImage && !resultImage"
                 :src="mediaURL + singleImage"
               ></v-img>
               <v-img v-else :src="resultImage"> </v-img>
             </v-flex>
-            <v-flex
-              v-if="singleImage || resultImage"
-              xs12
-              md3
-              align-self-center
-            >
+            <v-flex v-if="singleImage" xs12 md3 align-self-center>
               <v-layout wrap justify-center>
                 <v-flex xs12 pa-2>
                   <v-btn
@@ -157,8 +112,9 @@
                   >
                     <span
                       style="
-                        font-size: 8px;
+                        font-size: 12px;
                         text-align: end;
+                        font-family: poppinsregular;
                         letter-spacing: 0px;
                         color: #000000;
                         opacity: 1;
@@ -185,20 +141,12 @@
   </div>
 </template>
 <script>
-import { Cropper } from "vue-advanced-cropper";
-import "vue-advanced-cropper/dist/style.css";
+// import { Cropper } from "vue-advanced-cropper";
+// import "vue-advanced-cropper/dist/style.css";
 export default {
-  props: [
-    "singleImage",
-    "pageId",
-    "height",
-    "width",
-    "heading",
-    "componentType",
-    "index",
-  ],
+  props: ["singleImage", "pageId", "height", "width", "heading"],
   components: {
-    Cropper,
+    // Cropper,
   },
   data() {
     return {
@@ -214,22 +162,17 @@ export default {
   },
 
   methods: {
-    rotateImage() {
-      this.$refs.cropper.rotate(90);
-    },
     // cropImage() {
-     
     //   var imageData = this.dataURLtoFile(
-    //     this.$refs.cropper.getResult().canvas.toDataURL("image/jpeg", 0.3),
+    //     this.$refs.cropper.getResult().canvas.toDataURL(),
     //     "myimage.jpg"
     //   );
     //   console.log("imageData", imageData);
     //   this.resultImage = URL.createObjectURL(imageData);
     //   this.isCropper = false;
     //   this.$emit("stepper", {
-    //     type: this.componentType,
+    //     type: "coverImage",
     //     selectedFiles: imageData,
-    //     index: this.index,
     //   });
     // },
     // dataURLtoFile(dataurl, filename) {
@@ -243,22 +186,29 @@ export default {
     //   }
     //   return new File([u8arr], filename, { type: mime });
     // },
-    // browseImage(event) {
-    //   var img;
-    //   img = new Image();
-    //   img.src = window.URL.createObjectURL(event.target.files[0]);
-    //   var ty = event.target.files[0];
-    //   if (ty.size > 3145728) {
-    //     this.msg = "File size Should be less than 3MB";
-    //     this.showSnackBar = true;
-    //     return;
-    //   } else {
-    //     img.onload = () => {
-    //       this.isCropper = true;
-    //       this.image = URL.createObjectURL(event.target.files[0]);
-    //     };
-    //   }
-    // },
+    browseImage(event) {
+      var img;
+      img = new Image();
+      img.src = window.URL.createObjectURL(event.target.files[0]);
+      img.onload = () => {
+          if (img.width > this.width) {
+          this.msg = "Please upload image with specified resolution";
+          this.showSnackBar = true;
+          return;
+        }
+        if (img.height > this.height) {
+          this.msg = "Please upload image with specified resolution";
+          this.showSnackBar = true;
+          return;
+        }
+         this.$emit("stepper", {
+        type: "coverImage",
+        selectedFiles: event.target.files[0],
+      });
+        this.resultImage = URL.createObjectURL(event.target.files[0]);
+      };
+    },
   },
 };
 </script>
+            

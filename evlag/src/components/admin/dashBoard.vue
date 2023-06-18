@@ -1,88 +1,33 @@
 <template>
-    <div class="dashboard">
-      <h1>Dashboard</h1>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">Sales</div>
-            <div class="card-body">
-              <canvas id="sales-chart"></canvas>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-header">Top Products</div>
-            <div class="card-body">
-              <table class="table">
-                <thead>
-                  <tr>
-                    <th>Product Name</th>
-                    <th>Units Sold</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Product A</td>
-                    <td>1000</td>
-                  </tr>
-                  <tr>
-                    <td>Product B</td>
-                    <td>800</td>
-                  </tr>
-                  <tr>
-                    <td>Product C</td>
-                    <td>600</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div>
+        <v-layout wrap justify-center>
+            <v-flex lg12>
+                <v-img src="../../assets/images/clay-banks-u27Rrbs9Dwc-unsplash.jpg" fixed height="100vh">
+                    <v-layout wrap justify-center>
+                        <v-flex lg12>
+                            <v-img class="my-element" src="../../assets/images/logo-no-background.png" width="15%" style="margin-left:42.8%; margin-top:15%"></v-img>
+                        </v-flex>
+                    </v-layout>
+                    <!-- <v-layout wrap justify-center>
+                                    <v-flex lg11>
+                                        <v-layout wrap justify-center>
+                                            <v-flex lg4>
+                                                <v-card elevation="10" color="grey-lighten-1" height="150px" width="325px">
+                                                    <v-layout wrap justify-center>
+                                                        <v-flex lg12>
+                                                            
+                                                        </v-flex>
+                                                    </v-layout>
+                                                </v-card>
+                                            </v-flex>
+                                        </v-layout>
+                                    </v-flex>
+                                </v-layout> -->
+                    
+                </v-img>
+                
+            </v-flex>
+        </v-layout>
     </div>
-  </template>
-  
-  <script>
-  import Chart from 'chart.js';
-  
-  export default {
-    mounted() {
-      // Sales Chart
-      const salesData = [1000, 2000, 1500, 3000, 2500, 2000, 1500];
-      const salesLabels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-      const salesChart = new Chart(document.getElementById('sales-chart'), {
-        type: 'line',
-        data: {
-          labels: salesLabels,
-          datasets: [
-            {
-              label: 'Sales',
-              data: salesData,
-              borderColor: 'blue',
-              borderWidth: 2,
-              fill: false,
-            },
-          ],
-        },
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          legend: {
-            display: false,
-          },
-        },
-      });
-    },
-  };
-  </script>
-  
-  <style scoped>
-  .dashboard {
-    margin: 20px;
-  }
-  .card {
-    margin-bottom: 20px;
-  }
-  </style>
-  
+</template>
+

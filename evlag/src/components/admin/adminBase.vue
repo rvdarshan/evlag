@@ -13,10 +13,10 @@
                             <v-list-item >
                                 <v-list-item-content>
                                 <v-list-item-title class="text-h6">
-                                    <p style="margin-left:35%">EVLAG</p>
+                                    <p style="text-align:center">EVLAG</p>
                                 </v-list-item-title>
                                 <v-list-item-subtitle>
-                                    <p style="margin-left:28%">SUPER ADMIN</p>
+                                    <p style="text-align:center">ADMIN</p>
                                 </v-list-item-subtitle>
                                 </v-list-item-content>
                             </v-list-item>
@@ -73,14 +73,10 @@
     data () {
       return {
         items: [
-          { title: 'DASHBOARD', icon: 'mdi-view-dashboard', link:'dashboard' },    
-          { title: 'ADD NEW SECURITY', icon:'mdi-account-plus', link:'securityregistration' },
-          { title: 'SECURITY LIST', icon:'mdi-account-group-outline', link:'securitylist' },
-          { title: 'SECURITY POSTING', icon:'mdi-bell-outline', link:'securityallocation' },
-          { title: 'POSTING DETAILS', icon:'mdi-post-outline', link:'viewallocation'},
-          { title: "VISITOR'S LOG", icon:'mdi-book-open', link:'userlog' },
-          { title: 'ADD NEW ADMIN', icon:'mdi-account-plus',link:'addadmin'},
-          { title: 'ADD LOCATION', icon:'mdi-map-marker-plus', link:'addlocation'},
+          { title: 'DASHBOARD', icon: 'mdi-view-dashboard', link:'admindash' }, 
+          { title: 'APPOINTMENTS', icon: 'mdi-human-male-board-poll', link:'appointment'},
+          { title: 'VISITOR LOG', icon:'mdi-book-open', link:'loguser'},   
+          
         ],
         
       }

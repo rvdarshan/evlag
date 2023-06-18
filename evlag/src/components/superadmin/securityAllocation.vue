@@ -163,7 +163,7 @@ export default {
                 if(response.data.status)
                 {
                     console.log("allocated");
-                    this.$router.push('/securityallocation');
+                    this.$router.push('/dashboard');
                 }
                 else{
             console.log(response.data.msg);

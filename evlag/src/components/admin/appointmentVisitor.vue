@@ -6,7 +6,7 @@
                 <v-layout wrap justify-center>
                     <v-flex lg12>
                         <v-card>
-                            <v-card-title>VISITOR'S LOG
+                            <v-card-title>APPOINTMENTS
                                 <v-spacer></v-spacer>
                                 <v-text-field
                                     v-model="search"
@@ -19,7 +19,7 @@
                                 ></v-text-field>
                                 
                                 <v-spacer></v-spacer>
-                                <v-btn color="black" @click="saveAsPDF()"><p style="margin-top:30%;color:white">PRINT</p></v-btn>
+                                <!-- <v-btn color="black" @click="saveAsPDF()"><p style="margin-top:30%;color:white">PRINT</p></v-btn> -->
                             </v-card-title>
                             <v-data-table
                                 header-fixed
@@ -60,50 +60,18 @@ export default {
                     value:'visitorName'
                 },
                 {
-                    text:'GENDER',
-                    sortable:false,
-                    value:'visitorGender'
-                },
-                {
-                    text:'ADDRESS',
-                    sortable:false,
-                    value:'visitorAddress'
-                },
-                {
                     text:'PHONE',
                     sortable:false,
                     value:'visitorPhoneNumber',
                 }, 
-                {
-                    text:'VEHICLE NO',
-                    sortable:false,
-                    value:'visitorVehicleNumber',
-                },
+               
                 {
                     text:'IN-TIME',
                     sortable:false,
                     value:'enterTime'
                 },
-                {
-                    text:'OUT-TIME',
-                    sortable:false,
-                    value:'exitTime',
-                },
-                {
-                    text:'PURPOSE',
-                    sortable:false,
-                    value:'visitorPurpose'
-                },
-                {
-                    text:'OTHER PURPOSE',
-                    sortable:false,
-                    value:'otherPurpose'
-                },
-                {
-                    text:'STATUS',
-                    sortable:false,
-                    value:'status'
-                },
+                
+                
 
             ]
         }
@@ -126,7 +94,11 @@ export default {
                 if(response.data.status)
                 {
                     console.log("responded");
-                    this.userdata=response.data.data;
+                    if(localStorage.designation==response.data.data.purpose)
+                    {
+                        this.userdata=response.data.data;
+                    }
+                    
                 }
                 else{
                     alert("Something went wrong")
