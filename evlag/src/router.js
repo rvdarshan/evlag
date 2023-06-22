@@ -36,6 +36,12 @@ let router = new Router({
             
     },
     {
+        path:'/nav',
+        props:true,
+        component:()=>
+            import('./components/basic/navPage')
+    },
+    {
         path:'/admin',
         name:'admin',
         component:()=>
@@ -115,6 +121,12 @@ let router = new Router({
                 props:true,
                 component:()=>
                     import('./components/superadmin/securityList')
+            },
+            {
+                path:'/adminlist',
+                props:true,
+                component:()=>
+                    import('./components/superadmin/adminList')
             },
             {
                 path:'/securityprofile',

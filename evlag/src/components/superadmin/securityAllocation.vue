@@ -109,6 +109,9 @@ export default {
                     text:'SECURITY ID', value:'securityId'
                 }, 
                 {
+                    text:'POSTING STATUS', value:'allocationStatus'
+                },
+                {
                     text: "Actions", value:'_id', sortable: false, width: "20%" 
                 },
                 

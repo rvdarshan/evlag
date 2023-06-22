@@ -3,7 +3,7 @@
         <v-layout wrap justify-center>
             <v-flex lg12>
                 <v-img src="../../assets/images/map2.jpg" height="100vh" >
-                    <v-card elevation="10" height="60vh" width="100vh" color="rgba(101, 101, 101, 0.85)" style="margin-top:12%;margin-left:18%">
+                    <v-card elevation="10" height="60vh" width="100vh" color="white" style="margin-top:12%;margin-left:18%">
                         <span style="margin-top:3%;margin-left:31%;font-size:22px"><b>ADD NEW LOCATION DETAILS</b></span>
                         <v-layout wrap justify-center>
                             <v-flex lg4>

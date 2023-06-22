@@ -44,7 +44,7 @@
                                 </v-list-item-icon>
 
                                 <v-list-item-content>
-                                    <v-list-item-title>{{ item.title }}</v-list-item-title>
+                                    <v-list-item-title >{{ item.title }}</v-list-item-title>
                                 </v-list-item-content>
                                  </v-tab>
                                 </v-list-item>
@@ -81,6 +81,7 @@
           { title: "VISITOR'S LOG", icon:'mdi-book-open', link:'userlog' },
           { title: 'ADD NEW ADMIN', icon:'mdi-account-plus',link:'addadmin'},
           { title: 'ADD LOCATION', icon:'mdi-map-marker-plus', link:'addlocation'},
+          { title: 'ADMIN LIST', icon:'mdi-account-multiple', link:'adminlist'},
         ],
         
       }

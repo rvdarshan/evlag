@@ -94,7 +94,7 @@ export default {
                 if(response.data.status)
                 {
                     console.log("responded");
-                    if(localStorage.designation==response.data.data.purpose)
+                    if(response.data.data.purpose=="PRINCIPAL VISIT")
                     {
                         this.userdata=response.data.data;
                     }
