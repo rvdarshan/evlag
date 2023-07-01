@@ -19,7 +19,7 @@
                                 ></v-text-field>
                                 
                                 <v-spacer></v-spacer>
-                                <v-btn color="black" @click="saveAsPDF()"><p style="margin-top:30%;color:white">PRINT</p></v-btn>
+                                <!-- <v-btn color="black" @click="saveAsPDF()"><p style="margin-top:30%;color:white">PRINT</p></v-btn> -->
                             </v-card-title>
                             <v-data-table
                                 header-fixed

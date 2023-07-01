@@ -75,7 +75,7 @@ export default {
     {
       axios({
       method: "get",
-      url: this.baseURL+ '/admin/logout',
+      url: this.baseURL+'/admin/logout',
       headers:{
           token: localStorage.getItem('Token')                   
       },

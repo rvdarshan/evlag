@@ -482,9 +482,9 @@ export default {
           .then((response) => {
             if (response.data.status) {
               this.documentID = response.data.data._id;
-              alert(this.documentID);
+              // alert(this.documentID);
               console.log("documentID", this.documentID);
-              alert("hii");
+              // alert("hii");
               console.log("documentfile", this.documentFile1);
               if (this.documentID) {
                 this.docsupload();

@@ -80,7 +80,7 @@
           { title: 'POSTING DETAILS', icon:'mdi-post-outline', link:'viewallocation'},
           { title: "VISITOR'S LOG", icon:'mdi-book-open', link:'userlog' },
           { title: 'ADD NEW ADMIN', icon:'mdi-account-plus',link:'addadmin'},
-          { title: 'ADD LOCATION', icon:'mdi-map-marker-plus', link:'addlocation'},
+        //   { title: 'ADD LOCATION', icon:'mdi-map-marker-plus', link:'addlocation'},
           { title: 'ADMIN LIST', icon:'mdi-account-multiple', link:'adminlist'},
         ],
         

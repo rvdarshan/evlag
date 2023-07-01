@@ -39,6 +39,7 @@
 
 <script>
 import axios from 'axios';
+
 import html2pdf from 'html2pdf.js';
 
 export default {
@@ -84,7 +85,7 @@ export default {
         {
             axios({
                 method:'get',
-                url:this.baseURL+'/view/allvisitors',
+                url:'/principal/visit/list',
                 headers:{
                     token:localStorage.getItem("Token"),
                 },
@@ -93,11 +94,9 @@ export default {
             }).then((response)=>{
                 if(response.data.status)
                 {
-                    console.log("responded");
-                    if(response.data.data.purpose=="PRINCIPAL VISIT")
-                    {
-                        this.userdata=response.data.data;
-                    }
+                    
+                        this.userdata=response.data.PRINCIPAL;
+    
                     
                 }
                 else{
