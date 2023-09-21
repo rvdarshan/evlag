@@ -467,7 +467,7 @@ export default {
         axios({
           method: "post",
           url: this.baseURL + "/superAdminn/addSecurity",
-          headers: {
+          headers: {  
             token: localStorage.getItem("Token"),
           },
           data: {
